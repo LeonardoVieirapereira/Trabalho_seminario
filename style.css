@@ -1,1 +1,27 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
 
+int main() {
+    std::string texto = "Olá, mundo!";
+
+    // Encontrar posição (find)
+    size_t posicao = texto.find("mundo"); // Retorna a posição do caractere inicial
+
+    // Converter para maiúsculas (Upper)
+    std::string maiuscula = texto;
+    std::transform(maiuscula.begin(), maiuscula.end(), maiuscula.begin(), ::toupper);
+
+    // Substituição (replace)
+    std::string novoTexto = texto;
+    size_t posSubst = novoTexto.find("Olá");
+    if (posSubst != std::string::npos) {
+        novoTexto.replace(posSubst, 3, "Adeus"); // Substitui 3 caracteres ("Olá") por "Adeus"
+    }
+
+    std::cout << "Posição: " << posicao << std::endl;
+    std::cout << "Maiúsculo: " << maiuscula << std::endl;
+    std::cout << "Substituição: " << novoTexto << std::endl;
+
+    return 0;
+}
