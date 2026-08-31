@@ -1,117 +1,164 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seminário - Manipulação de Strings e Listas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 40px;
-            color: #333;
-        }
-        h1 {
-            color: #1a73e8;
-            text-align: center;
-        }
-        .card {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        input[type="text"] {
-            padding: 8px 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        button {
-            padding: 8px 16px;
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        button:hover {
-            background-color: #1557b0;
-        }
-        .result {
-            margin-top: 12px;
-            font-weight: bold;
-            color: #2b8a3e;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desenvolvimento de Sistemas - Slides</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #111827;
+      --border: #1f2937;
+      --cyan: #06b6d4;
+      --text: #e5e7eb;
+      --title: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .slide-box {
+      width: 90%;
+      max-width: 850px;
+      height: 520px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .slide { display: none; height: 100%; flex-direction: column; justify-content: center; }
+    .slide.active { display: flex; }
+
+    h1, h2 { color: var(--title); margin-bottom: 15px; font-size: 2rem; border-bottom: 2px solid var(--cyan); padding-bottom: 8px; }
+    p, li { font-size: 1.1rem; line-height: 1.6; color: var(--text); margin-bottom: 10px; }
+    ul { margin-left: 20px; }
+    
+    .code-sample {
+      background: #030712;
+      border: 1px solid var(--cyan);
+      color: #38bdf8;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: monospace;
+      margin-top: 10px;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 15px;
+    }
+
+    button {
+      background: transparent;
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button:hover { background: var(--cyan); color: #000; }
+    button:disabled { opacity: 0.3; cursor: not-allowed; border-color: var(--border); color: var(--text); }
+  </style>
 </head>
 <body>
 
-    <h1>Demonstração Prática: Strings e Listas</h1>
-
-    <!-- Bloco 1: Manipulação de Strings -->
-    <div class="card">
-        <h2>1. Manipulação de String</h2>
-        <p>Texto de Entrada: <strong id="texto-original">Desenvolvimento de Sistemas</strong></p>
-        
-        <button onclick="converterMaiusculas()">Upper (.toUpperCase)</button>
-        <button onclick="converterMinusculas()">Lower (.toLowerCase)</button>
-        <button onclick="substituirPalavra()">Replace ('Sistemas' -> 'Web')</button>
-        
-        <div class="result" id="resultado-string">Resultado aparecerá aqui...</div>
+  <div class="slide-box">
+    
+    <div class="slide active">
+      <h1>Desenvolvimento de Sistemas</h1>
+      <p><strong>Aula 32 & 33:</strong> Manipulação de Strings e Listas</p>
+      <p>Estilo Noturno & Tecnológico</p>
     </div>
 
-    <!-- Bloco 2: Manipulação de Listas -->
-    <div class="card">
-        <h2>2. Adicionar Itens à Lista (Exemplo Forca)</h2>
-        <p>Digite uma letra para adicionar à lista:</p>
-        
-        <input type="text" id="input-letra" maxlength="1" placeholder="Ex: a">
-        <button onclick="adicionarElemento()">Adicionar (.append / push)</button>
-        <button onclick="limparLista()">Limpar Lista</button>
-
-        <div class="result">
-            Conteúdo da Lista: <span id="resultado-lista">[]</span>
-        </div>
+    <div class="slide">
+      <h2>Manipulação de Strings</h2>
+      <p>Strings são sequências de caracteres usadas para tratar textos.</p>
+      <ul>
+        <li><strong>.find() / .indexOf():</strong> Busca posições de letras ou palavras.</li>
+        <li><strong>.count():</strong> Conta ocorrências de caracteres.</li>
+        <li><strong>.upper() / .lower():</strong> Converte maiúsculas e minúsculas.</li>
+        <li><strong>.replace():</strong> Substitui termos específicos no texto.</li>
+      </ul>
     </div>
 
-    <script>
-        let listaLetras = [];
+    <div class="slide">
+      <h2>Estrutura de Listas</h2>
+      <p>Listas são coleções mutáveis que armazenam dados dinâmicos.</p>
+      <ul>
+        <li>Usadas para guardar o progresso de jogos (ex: Jogo da Forca).</li>
+        <li>Permitem adicionar e remover itens dinamicamente.</li>
+        <li>Exemplo em Python: <code>.append()</code> e <code>.remove()</code></li>
+      </ul>
+    </div>
 
-        function converterMaiusculas() {
-            let texto = document.getElementById("texto-original").innerText;
-            document.getElementById("resultado-string").innerText = texto.toUpperCase();
-        }
+    <div class="slide">
+      <h2>Exemplo Prático</h2>
+      <p>Exemplo de inserção de itens em lista:</p>
+      <div class="code-sample">
+        // Python: lista.append("A")<br>
+        // C++: lista.push_back("A");<br>
+        // Java: lista.add("A");
+      </div>
+    </div>
 
-        function converterMinusculas() {
-            let texto = document.getElementById("texto-original").innerText;
-            document.getElementById("resultado-string").innerText = texto.toLowerCase();
-        }
+    <div class="slide">
+      <h2>Conclusão</h2>
+      <p>Manipular Strings e Listas é essencial para criar algoritmos eficientes, analisar dados e construir jogos interativos.</p>
+    </div>
 
-        function substituirPalavra() {
-            let texto = document.getElementById("texto-original").innerText;
-            document.getElementById("resultado-string").innerText = texto.replace("Sistemas", "Web");
-        }
+    <div class="controls">
+      <button id="prevBtn" onclick="changeSlide(-1)">Anterior</button>
+      <span id="counter" style="color: #9ca3af;">Slide 1 de 5</span>
+      <button id="nextBtn" onclick="changeSlide(1)">Próximo</button>
+    </div>
 
-        function adicionarElemento() {
-            let input = document.getElementById("input-letra");
-            let valor = input.value.trim();
+  </div>
 
-            if (valor !== "") {
-                listaLetras.push(valor);
-                document.getElementById("resultado-lista").innerText = JSON.stringify(listaLetras);
-                input.value = "";
-                input.focus();
-            }
-        }
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-        function limparLista() {
-            listaLetras = [];
-            document.getElementById("resultado-lista").innerText = "[]";
-        }
-    </script>
+    function update() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === current));
+      counter.textContent = `Slide ${current + 1} de ${slides.length}`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+    }
+
+    function changeSlide(dir) {
+      current += dir;
+      update();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && current < slides.length - 1) changeSlide(1);
+      if (e.key === 'ArrowLeft' && current > 0) changeSlide(-1);
+    });
+
+    update();
+  </script>
 </body>
 </html>
