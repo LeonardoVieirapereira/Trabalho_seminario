@@ -1,1 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Manipulação de Strings</title>
+</head>
+<body>
+    <h2>Exemplo de Manipulação de String</h2>
+    <p id="resultado"></p>
 
+    <script>
+        let texto = "Olá, mundo!";
+
+        let posicao = texto.indexOf("mundo"); // Retorna 5
+        let maiuscula = texto.toUpperCase(); // OLÁ, MUNDO!
+        let novoTexto = texto.replace("Olá", "Adeus"); // Adeus, mundo!
+
+        document.getElementById("resultado").innerHTML = 
+            "Posição: " + posicao + "<br>" +
+            "Maiúsculo: " + maiuscula + "<br>" +
+            "Substituição: " + novoTexto;
+    </script>
+</body>
+</html>
