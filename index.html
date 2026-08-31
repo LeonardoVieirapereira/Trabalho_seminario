@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desenvolvimento de Sistemas - Slides</title>
+  <title>Aulas 32 e 33 - Desenvolvimento de Sistemas</title>
   <style>
     :root {
-      --bg: #090d16;
-      --card: #111827;
-      --border: #1f2937;
-      --cyan: #06b6d4;
-      --text: #e5e7eb;
-      --title: #ffffff;
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --cyan: #58a6ff;
+      --text: #c9d1d9;
+      --heading: #ffffff;
+      --code-bg: #011627;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
@@ -27,34 +28,35 @@
 
     .slide-box {
       width: 90%;
-      max-width: 850px;
-      height: 520px;
+      max-width: 900px;
+      height: 580px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
-      padding: 40px;
+      box-shadow: 0 0 25px rgba(88, 166, 255, 0.2);
+      padding: 35px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
     }
 
     .slide { display: none; height: 100%; flex-direction: column; justify-content: center; }
     .slide.active { display: flex; }
 
-    h1, h2 { color: var(--title); margin-bottom: 15px; font-size: 2rem; border-bottom: 2px solid var(--cyan); padding-bottom: 8px; }
-    p, li { font-size: 1.1rem; line-height: 1.6; color: var(--text); margin-bottom: 10px; }
+    h1, h2 { color: var(--heading); margin-bottom: 12px; font-size: 1.8rem; border-bottom: 2px solid var(--cyan); padding-bottom: 6px; }
+    p, li { font-size: 1rem; line-height: 1.5; color: var(--text); margin-bottom: 8px; }
     ul { margin-left: 20px; }
-    
-    .code-sample {
-      background: #030712;
-      border: 1px solid var(--cyan);
-      color: #38bdf8;
-      padding: 12px;
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      color: #82aaff;
+      padding: 10px;
       border-radius: 6px;
-      font-family: monospace;
-      margin-top: 10px;
+      font-family: 'Consolas', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      margin-top: 8px;
     }
 
     .controls {
@@ -62,21 +64,22 @@
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid var(--border);
-      padding-top: 15px;
+      padding-top: 12px;
+      margin-top: 10px;
     }
 
     button {
       background: transparent;
       color: var(--cyan);
       border: 1px solid var(--cyan);
-      padding: 10px 20px;
+      padding: 8px 18px;
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
       transition: 0.2s;
     }
 
-    button:hover { background: var(--cyan); color: #000; }
+    button:hover { background: var(--cyan); color: #0d1117; }
     button:disabled { opacity: 0.3; cursor: not-allowed; border-color: var(--border); color: var(--text); }
   </style>
 </head>
@@ -84,51 +87,170 @@
 
   <div class="slide-box">
     
+    <!-- SLIDE 1 -->
     <div class="slide active">
-      <h1>Desenvolvimento de Sistemas</h1>
-      <p><strong>Aula 32 & 33:</strong> Manipulação de Strings e Listas</p>
-      <p>Estilo Noturno & Tecnológico</p>
+      <h1>Curso Técnico em Desenvolvimento de Sistemas</h1>
+      <p><strong>Aulas 32 e 33:</strong> Manipulação de Strings e Listas</p>
+      <p>Estilo Noturno / Tecnológico</p>
+      <p style="margin-top: 15px; color: var(--cyan);">1ª Série - Introdução à Programação</p>
     </div>
 
+    <!-- SLIDE 2 -->
     <div class="slide">
-      <h2>Manipulação de Strings</h2>
-      <p>Strings são sequências de caracteres usadas para tratar textos.</p>
+      <h2>Aula 32: O Desafio de Carlos</h2>
+      <p>Carlos precisa extrair informações de um texto e contar a frequência de palavras/letras.</p>
       <ul>
-        <li><strong>.find() / .indexOf():</strong> Busca posições de letras ou palavras.</li>
-        <li><strong>.count():</strong> Conta ocorrências de caracteres.</li>
-        <li><strong>.upper() / .lower():</strong> Converte maiúsculas e minúsculas.</li>
-        <li><strong>.replace():</strong> Substitui termos específicos no texto.</li>
+        <li><strong>Solução:</strong> Usar o método <code>count()</code> para contar ocorrências.</li>
+        <li>Usar <code>find()</code> ou <code>index()</code> para achar a posição da letra.</li>
+        <li>Usar <code>split()</code> para separar as palavras.</li>
       </ul>
     </div>
 
+    <!-- SLIDE 3 -->
     <div class="slide">
-      <h2>Estrutura de Listas</h2>
-      <p>Listas são coleções mutáveis que armazenam dados dinâmicos.</p>
+      <h2>Aula 32: Funções de String em Python</h2>
       <ul>
-        <li>Usadas para guardar o progresso de jogos (ex: Jogo da Forca).</li>
-        <li>Permitem adicionar e remover itens dinamicamente.</li>
-        <li>Exemplo em Python: <code>.append()</code> e <code>.remove()</code></li>
+        <li><code>.find()</code>: Retorna o índice da primeira ocorrência.</li>
+        <li><code>.count()</code>: Conta quantas vezes a letra aparece.</li>
+        <li><code>.upper() / .lower()</code>: Converte para maiúsculo/minúsculo.</li>
+        <li><code>.replace()</code>: Substitui trechos de texto.</li>
       </ul>
     </div>
 
+    <!-- SLIDE 4 -->
     <div class="slide">
-      <h2>Exemplo Prático</h2>
-      <p>Exemplo de inserção de itens em lista:</p>
-      <div class="code-sample">
-        // Python: lista.append("A")<br>
-        // C++: lista.push_back("A");<br>
-        // Java: lista.add("A");
-      </div>
+      <h2>Exemplo Prático de Strings (Python)</h2>
+      <pre>
+texto = "Olá, mundo!"
+print(texto.find("mundo"))  # Saída: 5
+print(texto.count("o"))      # Saída: 2
+print(texto.upper())        # Saída: OLÁ, MUNDO!
+print(texto.replace("Olá", "Adeus")) # Saída: Adeus, mundo!
+      </pre>
     </div>
 
+    <!-- SLIDE 5 -->
     <div class="slide">
-      <h2>Conclusão</h2>
-      <p>Manipular Strings e Listas é essencial para criar algoritmos eficientes, analisar dados e construir jogos interativos.</p>
+      <h2>Exemplo Prático de Strings em Java</h2>
+      <pre>
+public class StringsJava {
+    public static void main(String[] args) {
+        String texto = "Olá, mundo!";
+        System.out.println(texto.indexOf("mundo")); // Saída: 5
+        System.out.println(texto.toUpperCase());   // OLÁ, MUNDO!
+        System.out.println(texto.replace("Olá", "Adeus"));
+    }
+}
+      </pre>
     </div>
 
+    <!-- SLIDE 6 -->
+    <div class="slide">
+      <h2>Exemplo Prático de Strings em C++</h2>
+      <pre>
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string texto = "Ola, mundo!";
+    cout &lt;&lt; texto.find("mundo") &lt;&lt; endl; // Saída: 5
+    texto.replace(0, 3, "Adeus");
+    cout &lt;&lt; texto &lt;&lt; endl; // Adeus, mundo!
+    return 0;
+}
+      </pre>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide">
+      <h2>Aula 33: O Desafio do Jogo da Forca</h2>
+      <p>Isabele quer criar o jogo da forca e precisa rastrear o progresso da palavra secreta.</p>
+      <ul>
+        <li>Palavra secreta: "python" -> Lista inicial: <code>['_', '_', '_', '_', '_', '_']</code></li>
+        <li>Acertou 'p'? Lista atualizada: <code>['p', '_', '_', '_', '_', '_']</code></li>
+      </ul>
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="slide">
+      <h2>Aula 33: Trabalhando com Listas</h2>
+      <p>Listas são coleções mutáveis e dinâmicas.</p>
+      <ul>
+        <li><code>.append()</code>: Adiciona um item ao final da lista.</li>
+        <li><code>.remove()</code>: Remove um item.</li>
+        <li><code>.sort()</code>: Ordena os elementos da lista.</li>
+      </ul>
+    </div>
+
+    <!-- SLIDE 9 -->
+    <div class="slide">
+      <h2>Listas em Python</h2>
+      <pre>
+letras_acertadas = []
+letras_acertadas.append('a')
+letras_acertadas.append('b')
+print(letras_acertadas) # Saída: ['a', 'b']
+
+palavra_secreta = "gato"
+tentativa = input("Digite uma letra: ")
+if tentativa in palavra_secreta:
+    letras_acertadas.append(tentativa)
+      </pre>
+    </div>
+
+    <!-- SLIDE 10 -->
+    <div class="slide">
+      <h2>Listas (ArrayList) em Java</h2>
+      <pre>
+import java.util.ArrayList;
+
+public class ListasJava {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; letrasAcertadas = new ArrayList&lt;&gt;();
+        letrasAcertadas.add("a");
+        letrasAcertadas.add("b");
+        System.out.println(letrasAcertadas); // [a, b]
+    }
+}
+      </pre>
+    </div>
+
+    <!-- SLIDE 11 -->
+    <div class="slide">
+      <h2>Listas (std::vector) em C++</h2>
+      <pre>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    vector&lt;string&gt; letrasAcertadas;
+    letrasAcertadas.push_back("a");
+    letrasAcertadas.push_back("b");
+    for(string l : letrasAcertadas) {
+        cout &lt;&lt; l &lt;&lt; " ";
+    }
+    return 0;
+}
+      </pre>
+    </div>
+
+    <!-- SLIDE 12 -->
+    <div class="slide">
+      <h2>Conclusão das Aulas</h2>
+      <p>Manipulação de strings e o uso de listas são conceitos vitais para:</p>
+      <ul>
+        <li>Análise de dados e validação de entradas.</li>
+        <li>Construção de jogos interativos (como o Jogo da Forca).</li>
+        <li>Organização e alteração de dados de forma dinâmica em qualquer linguagem (Python, C++, Java).</li>
+      </ul>
+    </div>
+
+    <!-- BOTÕES -->
     <div class="controls">
       <button id="prevBtn" onclick="changeSlide(-1)">Anterior</button>
-      <span id="counter" style="color: #9ca3af;">Slide 1 de 5</span>
+      <span id="counter" style="color: #8b949e;">Slide 1 de 12</span>
       <button id="nextBtn" onclick="changeSlide(1)">Próximo</button>
     </div>
 
@@ -161,4 +283,5 @@
     update();
   </script>
 </body>
-</html>
+      </html>
+  
