@@ -4,254 +4,396 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aulas 32 e 33 - Desenvolvimento de Sistemas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg: #0d1117;
-      --card: #161b22;
-      --border: #30363d;
-      --cyan: #58a6ff;
-      --text: #c9d1d9;
-      --heading: #ffffff;
-      --code-bg: #011627;
+      --bg-gradient: linear-gradient(135deg, #050811 0%, #0b1220 50%, #050811 100%);
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --border-cyan: #00f2fe;
+      --border-blue: #4facfe;
+      --neon-glow: rgba(0, 242, 254, 0.35);
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --accent-green: #00ff88;
+      --accent-purple: #bd00ff;
+      --code-bg: #030712;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
-    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      background-color: var(--bg);
-      color: var(--text);
+      background: var(--bg-gradient);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      padding: 20px;
+      overflow: hidden;
     }
 
+    /* Container Principal com Efeito Glassmorphism & Neon */
     .slide-box {
-      width: 90%;
-      max-width: 900px;
-      height: 580px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: 0 0 25px rgba(88, 166, 255, 0.2);
-      padding: 35px;
+      width: 100%;
+      max-width: 950px;
+      height: 620px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 0 35px var(--neon-glow), inset 0 0 15px rgba(0, 242, 254, 0.1);
+      padding: 40px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
     }
 
-    .slide { display: none; height: 100%; flex-direction: column; justify-content: center; }
-    .slide.active { display: flex; }
+    /* Linha decorativa no topo */
+    .slide-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--border-cyan), var(--accent-purple), transparent);
+      box-shadow: 0 0 10px var(--border-cyan);
+    }
 
-    h1, h2 { color: var(--heading); margin-bottom: 12px; font-size: 1.8rem; border-bottom: 2px solid var(--cyan); padding-bottom: 6px; }
-    p, li { font-size: 1rem; line-height: 1.5; color: var(--text); margin-bottom: 8px; }
-    ul { margin-left: 20px; }
+    .slide {
+      display: none;
+      height: 100%;
+      flex-direction: column;
+      justify-content: flex-start;
+      animation: slideFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
+    .slide.active {
+      display: flex;
+    }
+
+    /* Tipografia Tecnológica */
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px var(--neon-glow);
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      color: var(--border-cyan);
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border-cyan);
+      padding-bottom: 8px;
+      display: inline-block;
+      text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+    }
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-bottom: 15px;
+    }
+
+    li {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    li::marker {
+      color: var(--border-cyan);
+    }
+
+    strong {
+      color: var(--border-cyan);
+      font-weight: 700;
+    }
+
+    .highlight {
+      color: var(--accent-green);
+      font-weight: 600;
+    }
+
+    /* Bloco de Código Estilizado */
     pre {
       background: var(--code-bg);
-      border: 1px solid var(--border);
-      color: #82aaff;
-      padding: 10px;
-      border-radius: 6px;
-      font-family: 'Consolas', monospace;
-      font-size: 0.85rem;
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      border-left: 4px solid var(--border-cyan);
+      color: #38bdf8;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      line-height: 1.5;
       overflow-x: auto;
-      margin-top: 8px;
+      margin-top: 10px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
     }
 
+    /* Rodapé e Botões */
     .controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 18px;
       margin-top: 10px;
     }
 
     button {
-      background: transparent;
-      color: var(--cyan);
-      border: 1px solid var(--cyan);
-      padding: 8px 18px;
+      background: rgba(0, 242, 254, 0.05);
+      color: var(--border-cyan);
+      border: 1px solid var(--border-cyan);
+      padding: 10px 24px;
       border-radius: 6px;
       cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
     }
 
-    button:hover { background: var(--cyan); color: #0d1117; }
-    button:disabled { opacity: 0.3; cursor: not-allowed; border-color: var(--border); color: var(--text); }
+    button:hover:not(:disabled) {
+      background: var(--border-cyan);
+      color: #050811;
+      box-shadow: 0 0 20px var(--border-cyan);
+      transform: translateY(-2px);
+    }
+
+    button:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+      border-color: var(--text-secondary);
+      color: var(--text-secondary);
+      box-shadow: none;
+    }
+
+    .slide-counter {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      letter-spacing: 2px;
+    }
+
+    @keyframes slideFade {
+      from { opacity: 0; transform: scale(0.98) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
   </style>
 </head>
 <body>
 
   <div class="slide-box">
     
-    <!-- SLIDE 1 -->
     <div class="slide active">
-      <h1>Curso Técnico em Desenvolvimento de Sistemas</h1>
-      <p><strong>Aulas 32 e 33:</strong> Manipulação de Strings e Listas</p>
-      <p>Estilo Noturno / Tecnológico</p>
-      <p style="margin-top: 15px; color: var(--cyan);">1ª Série - Introdução à Programação</p>
+      <h1>Desenvolvimento de Sistemas</h1>
+      <p style="color: var(--accent-purple); font-weight: 700; letter-spacing: 1px;">CURSO TÉCNICO PROFISSIONALIZANTE • 1ª SÉRIE</p>
+      <div style="margin-top: 30px;">
+        <h2>Aulas 32 & 33: Processamento de Dados</h2>
+        <p>• <strong>Aula 32:</strong> Técnicas Avançadas de Manipulação de Strings</p>
+        <p>• <strong>Aula 33:</strong> Estruturas de Dados Dinâmicas com Listas</p>
+        <p style="margin-top: 25px; color: var(--text-secondary); font-size: 1rem;">
+          Linguagens Abordadas: <span class="highlight">Python</span>, <span class="highlight">Java</span> e <span class="highlight">C++</span>
+        </p>
+      </div>
     </div>
 
-    <!-- SLIDE 2 -->
     <div class="slide">
-      <h2>Aula 32: O Desafio de Carlos</h2>
-      <p>Carlos precisa extrair informações de um texto e contar a frequência de palavras/letras.</p>
+      <h2>Aula 32: Contexto e Problematização</h2>
+      <p><strong>O Desafio de Carlos:</strong> Como desenvolvedor iniciante, Carlos precisa processar grandes volumes de texto para extrair informações específicas e realizar análises estatísticas.</p>
       <ul>
-        <li><strong>Solução:</strong> Usar o método <code>count()</code> para contar ocorrências.</li>
-        <li>Usar <code>find()</code> ou <code>index()</code> para achar a posição da letra.</li>
-        <li>Usar <code>split()</code> para separar as palavras.</li>
+        <li><strong>Busca de Padrões:</strong> Localizar a posição exata de caracteres e palavras.</li>
+        <li><strong>Contagem de Frequência:</strong> Saber quantas vezes um termo aparece no texto.</li>
+        <li><strong>Normalização de Dados:</strong> Padronizar o texto (maiúsculas/minúsculas) para comparações sem erros de digitação.</li>
       </ul>
     </div>
 
-    <!-- SLIDE 3 -->
     <div class="slide">
-      <h2>Aula 32: Funções de String em Python</h2>
+      <h2>Aula 32: Principais Métodos de Strings</h2>
+      <p>A manipulação de strings é indispensável para validações e análise de textos em sistemas corporativos:</p>
       <ul>
-        <li><code>.find()</code>: Retorna o índice da primeira ocorrência.</li>
-        <li><code>.count()</code>: Conta quantas vezes a letra aparece.</li>
-        <li><code>.upper() / .lower()</code>: Converte para maiúsculo/minúsculo.</li>
-        <li><code>.replace()</code>: Substitui trechos de texto.</li>
+        <li><code>.find() / .index()</code>: Retorna o índice numérico da primeira ocorrência de uma sub-string.</li>
+        <li><code>.count()</code>: Calcula a frequência exata de um caractere ou palavra.</li>
+        <li><code>.upper() & .lower()</code>: Converte a string para maiúsculas ou minúsculas (essencial para comparação de dados).</li>
+        <li><code>.replace(antigo, novo)</code>: Substitui sequências de texto por novos valores.</li>
       </ul>
     </div>
 
-    <!-- SLIDE 4 -->
     <div class="slide">
-      <h2>Exemplo Prático de Strings (Python)</h2>
+      <h2>Exemplo Prático em Python (Strings)</h2>
+      <p>Veja como executar operações essenciais em Python com poucas linhas de código:</p>
       <pre>
-texto = "Olá, mundo!"
-print(texto.find("mundo"))  # Saída: 5
-print(texto.count("o"))      # Saída: 2
-print(texto.upper())        # Saída: OLÁ, MUNDO!
-print(texto.replace("Olá", "Adeus")) # Saída: Adeus, mundo!
+# Declaração da String
+texto = "Desenvolvimento de Sistemas"
+
+# Executando os métodos da Aula 32
+print(texto.find("Sistemas"))        # Saída: 19 (posição inicial)
+print(texto.count("e"))               # Saída: 5 (frequência da letra 'e')
+print(texto.upper())                 # Saída: DESENVOLVIMENTO DE SISTEMAS
+print(texto.replace("Sistemas", "Web")) # Saída: Desenvolvimento de Web
       </pre>
     </div>
 
-    <!-- SLIDE 5 -->
     <div class="slide">
-      <h2>Exemplo Prático de Strings em Java</h2>
+      <h2>Comparativo de Strings: Java & C++</h2>
+      <p>A mesma lógica aplicada em outras linguagens orientadas a objetos e compiladas:</p>
       <pre>
-public class StringsJava {
-    public static void main(String[] args) {
-        String texto = "Olá, mundo!";
-        System.out.println(texto.indexOf("mundo")); // Saída: 5
-        System.out.println(texto.toUpperCase());   // OLÁ, MUNDO!
-        System.out.println(texto.replace("Olá", "Adeus"));
-    }
-}
-      </pre>
-    </div>
+// --- JAVA ---
+String texto = "Desenvolvimento de Sistemas";
+int pos = texto.indexOf("Sistemas"); // 19
+String novo = texto.replace("Sistemas", "Web");
+System.out.println(texto.toUpperCase());
 
-    <!-- SLIDE 6 -->
-    <div class="slide">
-      <h2>Exemplo Prático de Strings em C++</h2>
-      <pre>
+// --- C++ ---
 #include &lt;iostream&gt;
 #include &lt;string&gt;
-using namespace std;
-
-int main() {
-    string texto = "Ola, mundo!";
-    cout &lt;&lt; texto.find("mundo") &lt;&lt; endl; // Saída: 5
-    texto.replace(0, 3, "Adeus");
-    cout &lt;&lt; texto &lt;&lt; endl; // Adeus, mundo!
-    return 0;
-}
+std::string texto = "Desenvolvimento de Sistemas";
+size_t pos = texto.find("Sistemas"); // 19
+texto.replace(pos, 8, "Web");
       </pre>
     </div>
 
-    <!-- SLIDE 7 -->
     <div class="slide">
-      <h2>Aula 33: O Desafio do Jogo da Forca</h2>
-      <p>Isabele quer criar o jogo da forca e precisa rastrear o progresso da palavra secreta.</p>
+      <h2>Aula 33: Estruturas de Dados (Listas)</h2>
+      <p><strong>O Desafio de Isabele (Jogo da Forca):</strong> Como armazenar e atualizar o progresso de um jogo mantendo a estrutura da palavra secreta?</p>
       <ul>
-        <li>Palavra secreta: "python" -> Lista inicial: <code>['_', '_', '_', '_', '_', '_']</code></li>
-        <li>Acertou 'p'? Lista atualizada: <code>['p', '_', '_', '_', '_', '_']</code></li>
+        <li><strong>Listas em Python:</strong> São coleções <em>mutáveis</em> e <em>dinâmicas</em> que armazenam múltiplos itens em uma só variável.</li>
+        <li><strong>Conceito de Índices:</strong> Cada elemento possui uma posição que começa em <code>0</code>.</li>
+        <li><strong>Evolução do Estado:</strong> Substiuição de underscores (<code>_</code>) pelas letras acertadas pelo jogador.</li>
       </ul>
     </div>
 
-    <!-- SLIDE 8 -->
     <div class="slide">
-      <h2>Aula 33: Trabalhando com Listas</h2>
-      <p>Listas são coleções mutáveis e dinâmicas.</p>
-      <ul>
-        <li><code>.append()</code>: Adiciona um item ao final da lista.</li>
-        <li><code>.remove()</code>: Remove um item.</li>
-        <li><code>.sort()</code>: Ordena os elementos da lista.</li>
-      </ul>
-    </div>
-
-    <!-- SLIDE 9 -->
-    <div class="slide">
-      <h2>Listas em Python</h2>
+      <h2>Lógica do Jogo da Forca com Listas</h2>
+      <p>Representação prática do acompanhamento de progresso com a palavra <span class="highlight">"python"</span>:</p>
       <pre>
-letras_acertadas = []
-letras_acertadas.append('a')
-letras_acertadas.append('b')
-print(letras_acertadas) # Saída: ['a', 'b']
+1. Inicialização com Underscores:
+   palavra_secreta = "python"
+   progresso = ['_', '_', '_', '_', '_', '_']
 
-palavra_secreta = "gato"
-tentativa = input("Digite uma letra: ")
+2. O jogador adivinha a letra 'p' (Índice 0):
+   progresso[0] = 'p' -> ['p', '_', '_', '_', '_', '_']
+
+3. O jogador adivinha a letra 'o' (Índice 4):
+   progresso[4] = 'o' -> ['p', '_', '_', '_', 'o', '_']
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>Métodos Cruciais para Listas em Python</h2>
+      <p>Operações de manipulação dinâmica de coleções:</p>
+      <ul>
+        <li><code>.append(item)</code>: Adiciona um novo elemento ao final da lista.</li>
+        <li><code>.remove(item)</code>: Remove a primeira ocorrência do valor especificado.</li>
+        <li><code>.sort()</code>: Reorganiza os elementos em ordem alfabética ou numérica.</li>
+        <li><code>len(lista)</code>: Retorna a quantidade total de elementos dentro da lista.</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h2>Exemplo Prático em Python (Listas)</h2>
+      <p>Código para armazenar palpites e gerenciar os acertos do jogador:</p>
+      <pre>
+# Criando uma lista vazia de letras acertadas
+letras_acertadas = []
+
+# Adicionando elementos dinamicamente
+letras_acertadas.append('p')
+letras_acertadas.append('y')
+print("Acertos:", letras_acertadas) # Saída: ['p', 'y']
+
+# Verificando existência com o operador 'in'
+palavra_secreta = "python"
+tentativa = input("Digite uma letra: ").lower()
+
 if tentativa in palavra_secreta:
     letras_acertadas.append(tentativa)
       </pre>
     </div>
 
-    <!-- SLIDE 10 -->
     <div class="slide">
-      <h2>Listas (ArrayList) em Java</h2>
+      <h2>Listas Dinâmicas em Java (ArrayList)</h2>
+      <p>Em Java, utilizamos a classe <code>ArrayList</code> para criar listas com tamanho dinâmico:</p>
       <pre>
 import java.util.ArrayList;
 
-public class ListasJava {
+public class JogoForca {
     public static void main(String[] args) {
+        // Criando uma lista de Strings
         ArrayList&lt;String&gt; letrasAcertadas = new ArrayList&lt;&gt;();
-        letrasAcertadas.add("a");
-        letrasAcertadas.add("b");
-        System.out.println(letrasAcertadas); // [a, b]
+
+        // Adicionando elementos
+        letrasAcertadas.add("p");
+        letrasAcertadas.add("y");
+
+        System.out.println("Progresso: " + letrasAcertadas);
     }
 }
       </pre>
     </div>
 
-    <!-- SLIDE 11 -->
     <div class="slide">
-      <h2>Listas (std::vector) em C++</h2>
+      <h2>Listas Dinâmicas em C++ (std::vector)</h2>
+      <p>Em C++, a estrutura equivalente para listas redimensionáveis é o <code>std::vector</code>:</p>
       <pre>
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
-using namespace std;
+#include &lt;string&gt;
 
 int main() {
-    vector&lt;string&gt; letrasAcertadas;
-    letrasAcertadas.push_back("a");
-    letrasAcertadas.push_back("b");
-    for(string l : letrasAcertadas) {
-        cout &lt;&lt; l &lt;&lt; " ";
-    }
+    // Criando um vector dinâmico
+    std::vector&lt;std::string&gt; letrasAcertadas;
+
+    // Adicionando elementos com push_back
+    letrasAcertadas.push_back("p");
+    letrasAcertadas.push_back("y");
+
+    std::cout &lt;&lt; "Tamanho da lista: " &lt;&lt; letrasAcertadas.size();
     return 0;
 }
       </pre>
     </div>
 
-    <!-- SLIDE 12 -->
     <div class="slide">
-      <h2>Conclusão das Aulas</h2>
-      <p>Manipulação de strings e o uso de listas são conceitos vitais para:</p>
+      <h2>Conclusão e Síntese Geral</h2>
+      <p>Domínio das estruturas fundamentais das Aulas 32 e 33:</p>
       <ul>
-        <li>Análise de dados e validação de entradas.</li>
-        <li>Construção de jogos interativos (como o Jogo da Forca).</li>
-        <li>Organização e alteração de dados de forma dinâmica em qualquer linguagem (Python, C++, Java).</li>
+        <li><strong>Strings:</strong> Indispensáveis para tratamento de entradas, buscas, substituições e análise de texto em qualquer software.</li>
+        <li><strong>Listas:</strong> Permitem criar aplicações dinâmicas e interativas (como o Jogo da Forca), armazenando dados que variam durante a execução.</li>
+        <li><strong>Próximo Passo (Aula 34):</strong> Compreender o conceito de <strong>Tuplas</strong> (coleções imutáveis) para proteção de dados sensíveis no sistema.</li>
       </ul>
     </div>
 
-    <!-- BOTÕES -->
     <div class="controls">
-      <button id="prevBtn" onclick="changeSlide(-1)">Anterior</button>
-      <span id="counter" style="color: #8b949e;">Slide 1 de 12</span>
-      <button id="nextBtn" onclick="changeSlide(1)">Próximo</button>
+      <button id="prevBtn" onclick="changeSlide(-1)">❮ ANTERIOR</button>
+      <span class="slide-counter" id="counter">SLIDE 1 DE 12</span>
+      <button id="nextBtn" onclick="changeSlide(1)">PRÓXIMO ❯</button>
     </div>
 
   </div>
@@ -265,7 +407,7 @@ int main() {
 
     function update() {
       slides.forEach((s, i) => s.classList.toggle('active', i === current));
-      counter.textContent = `Slide ${current + 1} de ${slides.length}`;
+      counter.textContent = `SLIDE ${current + 1} DE ${slides.length}`;
       prevBtn.disabled = current === 0;
       nextBtn.disabled = current === slides.length - 1;
     }
@@ -275,6 +417,7 @@ int main() {
       update();
     }
 
+    // Suporte para navegação pelas setas do teclado
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' && current < slides.length - 1) changeSlide(1);
       if (e.key === 'ArrowLeft' && current > 0) changeSlide(-1);
@@ -283,5 +426,5 @@ int main() {
     update();
   </script>
 </body>
-      </html>
-  
+        </html>
+        
