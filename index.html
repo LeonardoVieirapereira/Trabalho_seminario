@@ -2,23 +2,116 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Manipulação de Strings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminário - Manipulação de Strings e Listas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #1557b0;
+        }
+        .result {
+            margin-top: 12px;
+            font-weight: bold;
+            color: #2b8a3e;
+        }
+    </style>
 </head>
 <body>
-    <h2>Exemplo de Manipulação de String</h2>
-    <p id="resultado"></p>
+
+    <h1>Demonstração Prática: Strings e Listas</h1>
+
+    <!-- Bloco 1: Manipulação de Strings -->
+    <div class="card">
+        <h2>1. Manipulação de String</h2>
+        <p>Texto de Entrada: <strong id="texto-original">Desenvolvimento de Sistemas</strong></p>
+        
+        <button onclick="converterMaiusculas()">Upper (.toUpperCase)</button>
+        <button onclick="converterMinusculas()">Lower (.toLowerCase)</button>
+        <button onclick="substituirPalavra()">Replace ('Sistemas' -> 'Web')</button>
+        
+        <div class="result" id="resultado-string">Resultado aparecerá aqui...</div>
+    </div>
+
+    <!-- Bloco 2: Manipulação de Listas -->
+    <div class="card">
+        <h2>2. Adicionar Itens à Lista (Exemplo Forca)</h2>
+        <p>Digite uma letra para adicionar à lista:</p>
+        
+        <input type="text" id="input-letra" maxlength="1" placeholder="Ex: a">
+        <button onclick="adicionarElemento()">Adicionar (.append / push)</button>
+        <button onclick="limparLista()">Limpar Lista</button>
+
+        <div class="result">
+            Conteúdo da Lista: <span id="resultado-lista">[]</span>
+        </div>
+    </div>
 
     <script>
-        let texto = "Olá, mundo!";
+        let listaLetras = [];
 
-        let posicao = texto.indexOf("mundo"); // Retorna 5
-        let maiuscula = texto.toUpperCase(); // OLÁ, MUNDO!
-        let novoTexto = texto.replace("Olá", "Adeus"); // Adeus, mundo!
+        function converterMaiusculas() {
+            let texto = document.getElementById("texto-original").innerText;
+            document.getElementById("resultado-string").innerText = texto.toUpperCase();
+        }
 
-        document.getElementById("resultado").innerHTML = 
-            "Posição: " + posicao + "<br>" +
-            "Maiúsculo: " + maiuscula + "<br>" +
-            "Substituição: " + novoTexto;
+        function converterMinusculas() {
+            let texto = document.getElementById("texto-original").innerText;
+            document.getElementById("resultado-string").innerText = texto.toLowerCase();
+        }
+
+        function substituirPalavra() {
+            let texto = document.getElementById("texto-original").innerText;
+            document.getElementById("resultado-string").innerText = texto.replace("Sistemas", "Web");
+        }
+
+        function adicionarElemento() {
+            let input = document.getElementById("input-letra");
+            let valor = input.value.trim();
+
+            if (valor !== "") {
+                listaLetras.push(valor);
+                document.getElementById("resultado-lista").innerText = JSON.stringify(listaLetras);
+                input.value = "";
+                input.focus();
+            }
+        }
+
+        function limparLista() {
+            listaLetras = [];
+            document.getElementById("resultado-lista").innerText = "[]";
+        }
     </script>
 </body>
 </html>
