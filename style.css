@@ -5,46 +5,30 @@
 using namespace std;
 
 int main() {
-    cout << "=== SEMINARIO: STRINGS E LISTAS EM C++ ===" << endl;
+    cout << "=== MANIPULACAO DE STRINGS EM C++ ===" << endl;
+    string texto = "Curso de Desenvolvimento de Sistemas";
 
-    // 1. Manipulacao de Strings
-    string texto = "Desenvolvimento de Sistemas";
-    cout << "Texto original: " << texto << endl;
+    // Busca e substituição em String
+    size_t posicao = texto.find("Desenvolvimento");
+    texto.replace(texto.find("Sistemas"), 8, "Python");
 
-    // Busca a posição de uma substring (equivalente ao .find() do Python)
-    size_t pos = texto.find("Sistemas");
-    if (pos != string::npos) {
-        cout << "A palavra 'Sistemas' começa no indice: " << pos << endl;
-    }
+    cout << "Texto Alterado: " << texto << endl;
+    cout << "Posicao da palavra: " << posicao << endl;
 
-    // Substituição de caracteres
-    string textoModificado = texto;
-    size_t posTroca = textoModificado.find("Sistemas");
-    if (posTroca != string::npos) {
-        textoModificado.replace(posTroca, 8, "Web");
-        cout << "Texto modificado: " << textoModificado << endl;
-    }
+    cout << "\n=== MANIPULACAO DE LISTAS (VECTORS) EM C++ ===" << endl;
+    // Criando uma lista dinâmica em C++
+    vector<string> letrasAcertadas;
 
-    cout << "\n-----------------------------------\n" << endl;
+    // Adicionando elementos
+    letrasAcertadas.push_back("P");
+    letrasAcertadas.push_back("Y");
+    letrasAcertadas.push_back("T");
 
-    // 2. Manipulação de Vetores/Listas (equivalente ao list do Python)
-    vector<char> letrasAcertadas = {'_', '_', '_', '_', '_'};
-    cout << "Estado inicial da forca: ";
-    for (char c : letrasAcertadas) {
-        cout << c << " ";
+    cout << "Letras acertadas: ";
+    for (string letra : letrasAcertadas) {
+        cout << letra << " ";
     }
     cout << endl;
-
-    // Adicionando elementos dinamicamente (equivalente ao .append() do Python)
-    vector<string> listaCompras;
-    listaCompras.push_back("Teclado");
-    listaCompras.push_back("Mouse");
-    listaCompras.push_back("Monitor");
-
-    cout << "Itens na lista de compras (push_back):" << endl;
-    for (const string& item : listaCompras) {
-        cout << "- " << item << endl;
-    }
 
     return 0;
     }
