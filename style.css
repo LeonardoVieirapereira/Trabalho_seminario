@@ -1,27 +1,51 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
+#include <vector>
+
+using namespace std;
 
 int main() {
-    std::string texto = "Olá, mundo!";
+    cout << "=== SEMINARIO: STRINGS E LISTAS EM C++ ===" << endl;
 
-    // Encontrar posição (find)
-    size_t posicao = texto.find("mundo"); // Retorna a posição do caractere inicial
+    // 1. Manipulacao de Strings
+    string texto = "Desenvolvimento de Sistemas";
+    cout << "Texto original: " << texto << endl;
 
-    // Converter para maiúsculas (Upper)
-    std::string maiuscula = texto;
-    std::transform(maiuscula.begin(), maiuscula.end(), maiuscula.begin(), ::toupper);
-
-    // Substituição (replace)
-    std::string novoTexto = texto;
-    size_t posSubst = novoTexto.find("Olá");
-    if (posSubst != std::string::npos) {
-        novoTexto.replace(posSubst, 3, "Adeus"); // Substitui 3 caracteres ("Olá") por "Adeus"
+    // Busca a posição de uma substring (equivalente ao .find() do Python)
+    size_t pos = texto.find("Sistemas");
+    if (pos != string::npos) {
+        cout << "A palavra 'Sistemas' começa no indice: " << pos << endl;
     }
 
-    std::cout << "Posição: " << posicao << std::endl;
-    std::cout << "Maiúsculo: " << maiuscula << std::endl;
-    std::cout << "Substituição: " << novoTexto << std::endl;
+    // Substituição de caracteres
+    string textoModificado = texto;
+    size_t posTroca = textoModificado.find("Sistemas");
+    if (posTroca != string::npos) {
+        textoModificado.replace(posTroca, 8, "Web");
+        cout << "Texto modificado: " << textoModificado << endl;
+    }
+
+    cout << "\n-----------------------------------\n" << endl;
+
+    // 2. Manipulação de Vetores/Listas (equivalente ao list do Python)
+    vector<char> letrasAcertadas = {'_', '_', '_', '_', '_'};
+    cout << "Estado inicial da forca: ";
+    for (char c : letrasAcertadas) {
+        cout << c << " ";
+    }
+    cout << endl;
+
+    // Adicionando elementos dinamicamente (equivalente ao .append() do Python)
+    vector<string> listaCompras;
+    listaCompras.push_back("Teclado");
+    listaCompras.push_back("Mouse");
+    listaCompras.push_back("Monitor");
+
+    cout << "Itens na lista de compras (push_back):" << endl;
+    for (const string& item : listaCompras) {
+        cout << "- " << item << endl;
+    }
 
     return 0;
-}
+    }
+    
