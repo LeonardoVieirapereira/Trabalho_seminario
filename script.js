@@ -1,50 +1,28 @@
 import java.util.ArrayList;
-import java.util.List;
 
-public class ManipulacaoListas {
+public class Main {
     public static void main(String[] args) {
-        System.out.println("=== SEMINARIO: STRINGS E LISTAS EM JAVA ===");
+        System.out.println("=== MANIPULAÇÃO DE STRINGS EM JAVA ===");
+        String texto = "Curso de Desenvolvimento de Sistemas";
 
-        // 1. Manipulação de Strings
-        String texto = "Desenvolvimento de Sistemas";
+        // Substituição e busca em String
+        String novoTexto = texto.replace("Sistemas", "Python");
+        int posicao = texto.indexOf("Desenvolvimento");
+
         System.out.println("Texto Original: " + texto);
+        System.out.println("Texto Alterado: " + novoTexto);
+        System.out.println("Posicao da palavra: " + posicao);
 
-        // Caixa alta (equivalente ao .upper() do Python)
-        System.out.println("Maiúsculas: " + texto.toUpperCase());
+        System.out.println("\n=== MANIPULAÇÃO DE LISTAS EM JAVA ===");
+        // Criando uma lista de acertos (Jogo da Forca)
+        ArrayList<String> letrasAcertadas = new ArrayList<>();
 
-        // Caixa baixa (equivalente ao .lower() do Python)
-        System.out.println("Minúsculas: " + texto.toLowerCase());
+        // Adicionando elementos
+        letrasAcertadas.add("P");
+        letrasAcertadas.add("Y");
+        letrasAcertadas.add("T");
 
-        // Substituição de texto (equivalente ao .replace() do Python)
-        String textoAlterado = texto.replace("Sistemas", "Web");
-        System.out.println("Substituição: " + textoAlterado);
-
-        // Posição de caractere/palavra (equivalente ao .find() do Python)
-        int posicao = texto.indexOf("Sistemas");
-        System.out.println("Índice de 'Sistemas': " + posicao);
-
-        System.out.println("\n-----------------------------------\n");
-
-        // 2. Trabalhando com Listas Dinâmicas (ArrayList)
-        List<Character> letrasAcertadas = new ArrayList<>();
-
-        // Adicionando elementos (equivalente ao .append() do Python)
-        letrasAcertadas.add('p');
-        letrasAcertadas.add('y');
-        letrasAcertadas.add('t');
-        letrasAcertadas.add('h');
-        letrasAcertadas.add('o');
-        letrasAcertadas.add('n');
-
-        System.out.println("Letras Adicionadas na Lista: " + letrasAcertadas);
-        System.out.println("Tamanho da lista: " + letrasAcertadas.size());
-
-        // Verificando se contém um item
-        if (letrasAcertadas.contains('a')) {
-            System.out.println("A letra 'a' está na lista.");
-        } else {
-            System.out.println("A letra 'a' NAO está na lista.");
-        }
+        System.out.println("Letras acertadas: " + letrasAcertadas);
     }
-            }
-            
+}
+
