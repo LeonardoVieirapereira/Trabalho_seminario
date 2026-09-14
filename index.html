@@ -42,7 +42,6 @@
       position: relative;
     }
 
-    /* Efeito de Luzes Neon Fluindo no Fundo */
     body::before {
       content: '';
       position: absolute;
@@ -67,7 +66,6 @@
       pointer-events: none;
     }
 
-    /* Container Principal - Ocupa toda a tela disponível */
     .slide-box {
       width: 100%;
       height: 100%;
@@ -98,13 +96,29 @@
       animation: slideFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       overflow-y: auto;
       padding-right: 10px;
+      position: relative;
     }
 
     .slide.active {
       display: flex;
     }
 
-    /* Scrollbar Personalizada */
+    .speaker-tag {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--accent-green);
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      padding: 4px 10px;
+      border-radius: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 0 8px rgba(0, 255, 136, 0.2);
+    }
+
     .slide::-webkit-scrollbar {
       width: 6px;
     }
@@ -116,7 +130,6 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
-    /* ESTILOS DA ABERTURA */
     .intro-container {
       display: flex;
       flex-direction: column;
@@ -139,7 +152,6 @@
       animation: pulseGlow 2s infinite alternate, animCascade 0.6s ease forwards;
     }
 
-    /* TÍTULO COM EFEITO DE CORES "CORRENDO" */
     .title-main {
       font-family: 'Orbitron', sans-serif;
       font-size: 4rem;
@@ -163,7 +175,6 @@
       animation: animCascade 1s ease forwards;
     }
 
-    /* CARD DE EQUIPE */
     .team-box {
       margin-top: 30px;
       padding: 20px 50px;
@@ -194,7 +205,6 @@
       animation: flowColors 4s linear infinite;
     }
 
-    /* Tipografia Geral dos Slides */
     h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 2.8rem;
@@ -283,7 +293,6 @@
       box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
     }
 
-    /* Controles da Apresentação */
     .controls {
       display: flex;
       justify-content: space-between;
@@ -330,7 +339,6 @@
       letter-spacing: 2px;
     }
 
-    /* ANIMAÇÕES */
     @keyframes flowColors {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -388,6 +396,7 @@
 
     <!-- SLIDE 2 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Leonardo</span>
       <h2>Aula 32: Contexto e Problematização</h2>
       <p><strong>O Desafio Prático de Carlos:</strong> Ao criar um analisador de logs de servidores, Carlos precisou processar grandes volumes de texto para identificar falhas e padrões numéricos.</p>
       <ul>
@@ -402,6 +411,7 @@
 
     <!-- SLIDE 3 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Leonardo</span>
       <h2>Aula 32: Métodos de Manipulação de Strings</h2>
       <p>As cadeias de caracteres em Python fornecem métodos nativos otimizados para rápida busca e modificação de textos:</p>
       <ul>
@@ -417,6 +427,7 @@
 
     <!-- SLIDE 4 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Leonardo</span>
       <h2>Exemplo Prático em Python (Strings)</h2>
       <p>Exemplo de extração e tratamento de dados de uma frase utilizando múltiplos métodos integrados:</p>
       <pre>
@@ -440,6 +451,7 @@ print(f"Texto Modificado: {novo_texto}")
 
     <!-- SLIDE 5 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Leonardo</span>
       <h2>Comparativo de Strings: Java & C++</h2>
       <p>Entender a equivalência dos métodos de string em linguagens compiled melhora a portabilidade do código:</p>
       <pre>
@@ -464,6 +476,7 @@ texto.replace(pos, 8, "Web");                        // Substitui 8 caracteres
 
     <!-- SLIDE 6 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Tiago</span>
       <h2>Aula 33: Estruturas de Dados (Listas)</h2>
       <p><strong>O Desafio de Isabele (Jogo da Forca):</strong> Isabele precisa gerenciar o estado da palavra secreta e exibir o progresso do jogador sem perder os dados originais.</p>
       <ul>
@@ -478,6 +491,7 @@ texto.replace(pos, 8, "Web");                        // Substitui 8 caracteres
 
     <!-- SLIDE 7 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Tiago</span>
       <h2>Lógica do Jogo da Forca com Listas</h2>
       <p>Análise do fluxo de dados para controle de estados do jogo através de listas contíguas:</p>
       <pre>
@@ -503,6 +517,7 @@ texto.replace(pos, 8, "Web");                        // Substitui 8 caracteres
 
     <!-- SLIDE 8 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Tiago</span>
       <h2>Métodos Cruciais para Listas em Python</h2>
       <p>Principais operações para inserção, remoção e ordenação de dados em listas dinâmicas:</p>
       <ul>
@@ -519,6 +534,7 @@ texto.replace(pos, 8, "Web");                        // Substitui 8 caracteres
 
     <!-- SLIDE 9 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Tiago</span>
       <h2>Exemplo Prático em Python (Listas)</h2>
       <p>Implementação de lógica completa para armazenamento de palpites e controle de histórico de jogadas:</p>
       <pre>
@@ -546,6 +562,7 @@ print("Histórico de Palpites:", historico_tentativas)
 
     <!-- SLIDE 10 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Tiago</span>
       <h2>Listas Dinâmicas em Java (ArrayList)</h2>
       <p>Em Java, coleções flexíveis utilizam a classe <code>ArrayList</code> do pacote <code>java.util</code>:</p>
       <pre>
@@ -574,6 +591,7 @@ public class JogoForca {
 
     <!-- SLIDE 11 -->
     <div class="slide">
+      <span class="speaker-tag">Leitor: Tiago</span>
       <h2>Listas Dinâmicas em C++ (std::vector)</h2>
       <p>Em C++, a estrutura equivalente para contêineres dinâmicos e contíguos de memória é o <code>std::vector</code>:</p>
       <pre>
