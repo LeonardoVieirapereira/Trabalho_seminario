@@ -66,37 +66,28 @@
       pointer-events: none;
     }
 
-    /* Container Principal */
+    /* Container Principal com Borda Gradiente Unificada */
     .slide-box {
       width: 100%;
       max-width: 950px;
       height: 650px;
       background: var(--card-bg);
       backdrop-filter: blur(18px);
-      border: 1px solid rgba(0, 242, 254, 0.35);
-      border-radius: 16px;
-      box-shadow: 0 0 40px var(--neon-glow), inset 0 0 15px rgba(0, 242, 254, 0.1);
+      border: 2px solid transparent;
+      border-radius: 20px;
+      background-image: linear-gradient(var(--card-bg), var(--card-bg)), 
+                        linear-gradient(90deg, #00f2fe, #bd00ff, #00ff88, #4facfe, #00f2fe);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      background-size: 100% 100%, 300% 100%;
+      animation: flowBorder 5s linear infinite;
+      box-shadow: 0 0 35px var(--neon-glow);
       padding: 35px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
       z-index: 10;
-    }
-
-    /* BORDA COM EFEITO DE CORES CORRENDO NO TOPO */
-    .slide-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      border-radius: 16px 16px 0 0;
-      background: linear-gradient(90deg, #00f2fe, #bd00ff, #00ff88, #4facfe, #00f2fe);
-      background-size: 300% 100%;
-      animation: flowBorder 4s linear infinite;
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.8);
     }
 
     .slide {
@@ -136,7 +127,7 @@
       animation: pulseGlow 2s infinite alternate, animCascade 0.6s ease forwards;
     }
 
-    /* TÍTULO COM EFEITO DE CORES "CORRENDO" (GRADIENT FLOW) */
+    /* TÍTULO COM EFEITO DE CORES "CORRENDO" */
     .title-main {
       font-family: 'Orbitron', sans-serif;
       font-size: 2.8rem;
@@ -160,29 +151,15 @@
       animation: animCascade 1s ease forwards;
     }
 
-    /* CARD DE EQUIPE COM BORDA ILUMINADA QUE CORRE */
+    /* CARD DE EQUIPE COM BORDA ILUMINADA SUAVE */
     .team-box {
       margin-top: 25px;
       padding: 15px 30px;
       background: rgba(3, 7, 18, 0.8);
-      position: relative;
       border-radius: 12px;
+      border: 1px solid rgba(189, 0, 255, 0.5);
+      box-shadow: 0 0 15px rgba(189, 0, 255, 0.25);
       animation: animCascade 1.2s ease forwards;
-    }
-
-    .team-box::after {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 12px;
-      padding: 1px;
-      background: linear-gradient(90deg, #bd00ff, #00f2fe, #00ff88, #bd00ff);
-      background-size: 200% 100%;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: flowColors 3s linear infinite;
-      pointer-events: none;
     }
 
     .team-title {
@@ -374,7 +351,7 @@
       letter-spacing: 2px;
     }
 
-    /* ANIMAÇÃO DE CORES "CORRENDO" */
+    /* ANIMAÇÕES */
     @keyframes flowColors {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -382,8 +359,9 @@
     }
 
     @keyframes flowBorder {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 300% 0%; }
+      0% { background-position: 0% 50%, 0% 50%; }
+      50% { background-position: 0% 50%, 100% 50%; }
+      100% { background-position: 0% 50%, 0% 50%; }
     }
 
     @keyframes slideFade {
@@ -411,7 +389,7 @@
 
   <div class="slide-box">
     
-    <!-- SLIDE 1 (ABERTURA COM CORES CORRENDO) -->
+    <!-- SLIDE 1 -->
     <div class="slide active">
       <div class="intro-container">
         <span class="badge-tag">CURSO TÉCNICO • DESENVOLVIMENTO DE SISTEMAS</span>
