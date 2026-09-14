@@ -11,7 +11,7 @@
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #02040a 0%, #080e1a 50%, #02040a 100%);
-      --card-bg: rgba(15, 23, 42, 0.88);
+      --card-bg: rgba(15, 23, 42, 0.92);
       --border-cyan: #00f2fe;
       --border-blue: #4facfe;
       --neon-glow: rgba(0, 242, 254, 0.4);
@@ -35,8 +35,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      height: 100vh;
+      width: 100vw;
+      padding: 15px;
       overflow: hidden;
       position: relative;
     }
@@ -45,11 +46,11 @@
     body::before {
       content: '';
       position: absolute;
-      width: 350px;
-      height: 350px;
+      width: 50vw;
+      height: 50vh;
       background: radial-gradient(circle, rgba(189, 0, 255, 0.25) 0%, transparent 70%);
-      top: -50px;
-      left: -50px;
+      top: -10%;
+      left: -10%;
       animation: floatGlow 8s infinite alternate ease-in-out;
       pointer-events: none;
     }
@@ -57,20 +58,19 @@
     body::after {
       content: '';
       position: absolute;
-      width: 450px;
-      height: 450px;
+      width: 50vw;
+      height: 50vh;
       background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, transparent 70%);
-      bottom: -100px;
-      right: -100px;
+      bottom: -10%;
+      right: -10%;
       animation: floatGlow 10s infinite alternate-reverse ease-in-out;
       pointer-events: none;
     }
 
-    /* Container Principal com Borda Gradiente Unificada */
+    /* Container Principal - Ocupa toda a tela disponível */
     .slide-box {
       width: 100%;
-      max-width: 950px;
-      height: 650px;
+      height: 100%;
       background: var(--card-bg);
       backdrop-filter: blur(18px);
       border: 2px solid transparent;
@@ -82,7 +82,7 @@
       background-size: 100% 100%, 300% 100%;
       animation: flowBorder 5s linear infinite;
       box-shadow: 0 0 35px var(--neon-glow);
-      padding: 35px;
+      padding: 30px 40px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -92,16 +92,28 @@
 
     .slide {
       display: none;
-      height: 100%;
+      height: calc(100% - 60px);
       flex-direction: column;
       justify-content: flex-start;
       animation: slideFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       overflow-y: auto;
-      padding-right: 5px;
+      padding-right: 10px;
     }
 
     .slide.active {
       display: flex;
+    }
+
+    /* Scrollbar Personalizada */
+    .slide::-webkit-scrollbar {
+      width: 6px;
+    }
+    .slide::-webkit-scrollbar-thumb {
+      background: var(--border-cyan);
+      border-radius: 4px;
+    }
+    .slide::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
     }
 
     /* ESTILOS DA ABERTURA */
@@ -112,7 +124,7 @@
       justify-content: center;
       height: 100%;
       text-align: center;
-      gap: 15px;
+      gap: 20px;
     }
 
     .badge-tag {
@@ -120,9 +132,9 @@
       border: 1px solid var(--border-cyan);
       color: var(--border-cyan);
       font-family: 'Orbitron', sans-serif;
-      padding: 6px 16px;
+      padding: 8px 24px;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 1.1rem;
       letter-spacing: 2px;
       animation: pulseGlow 2s infinite alternate, animCascade 0.6s ease forwards;
     }
@@ -130,52 +142,51 @@
     /* TÍTULO COM EFEITO DE CORES "CORRENDO" */
     .title-main {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2.8rem;
+      font-size: 4rem;
       font-weight: 900;
       background: linear-gradient(90deg, #00f2fe, #bd00ff, #00ff88, #ff007f, #00f2fe);
       background-size: 300% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       margin-bottom: 5px;
       animation: flowColors 5s linear infinite, animCascade 0.8s ease forwards;
     }
 
     .subtitle-main {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.8rem;
       color: var(--text-secondary);
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       animation: animCascade 1s ease forwards;
     }
 
     /* CARD DE EQUIPE */
     .team-box {
-      margin-top: 25px;
-      padding: 15px 30px;
+      margin-top: 30px;
+      padding: 20px 50px;
       background: rgba(3, 7, 18, 0.8);
       border-radius: 12px;
       border: 1px solid rgba(189, 0, 255, 0.5);
-      box-shadow: 0 0 15px rgba(189, 0, 255, 0.25);
+      box-shadow: 0 0 20px rgba(189, 0, 255, 0.25);
       animation: animCascade 1.2s ease forwards;
     }
 
     .team-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: var(--accent-purple);
       letter-spacing: 2px;
       margin-bottom: 8px;
     }
 
-    /* NOMES DOS ALUNOS COM EFEITO DE TEXTO BRILHANTE DINÂMICO */
     .team-names {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       background: linear-gradient(90deg, #ffffff, #00f2fe, #ffffff, #bd00ff, #ffffff);
       background-size: 200% 100%;
       -webkit-background-clip: text;
@@ -186,44 +197,44 @@
     /* Tipografia Geral dos Slides */
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.8rem;
       color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       text-shadow: 0 0 12px var(--neon-glow);
     }
 
     h2 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
+      font-size: 2.2rem;
       color: var(--border-cyan);
-      letter-spacing: 1.5px;
-      margin-bottom: 15px;
-      border-bottom: 2px solid var(--border-cyan);
-      padding-bottom: 6px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      border-bottom: 3px solid var(--border-cyan);
+      padding-bottom: 8px;
       display: inline-block;
-      text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+      text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
     }
 
     p {
-      font-size: 1.15rem;
-      line-height: 1.5;
+      font-size: 1.35rem;
+      line-height: 1.6;
       color: var(--text-primary);
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       font-weight: 500;
     }
 
     ul {
-      margin-left: 25px;
-      margin-bottom: 15px;
+      margin-left: 35px;
+      margin-bottom: 20px;
     }
 
     li {
-      font-size: 1.1rem;
-      line-height: 1.5;
+      font-size: 1.25rem;
+      line-height: 1.6;
       color: var(--text-primary);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     li::marker {
@@ -243,33 +254,33 @@
     .info-card {
       background: rgba(3, 7, 18, 0.6);
       border: 1px solid rgba(0, 242, 254, 0.3);
-      border-left: 4px solid var(--accent-purple);
-      padding: 12px 18px;
-      border-radius: 8px;
-      margin-top: 10px;
-      margin-bottom: 10px;
+      border-left: 5px solid var(--accent-purple);
+      padding: 16px 24px;
+      border-radius: 10px;
+      margin-top: 15px;
+      margin-bottom: 15px;
     }
 
     .info-card p {
       margin-bottom: 0;
-      font-size: 1.05rem;
+      font-size: 1.2rem;
       color: var(--text-secondary);
     }
 
     pre {
       background: var(--code-bg);
       border: 1px solid rgba(0, 242, 254, 0.25);
-      border-left: 4px solid var(--border-cyan);
+      border-left: 5px solid var(--border-cyan);
       color: #38bdf8;
-      padding: 12px;
-      border-radius: 8px;
+      padding: 18px;
+      border-radius: 10px;
       font-family: 'Fira Code', monospace;
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-size: 1.05rem;
+      line-height: 1.5;
       overflow-x: auto;
-      margin-top: 8px;
-      margin-bottom: 10px;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+      margin-top: 12px;
+      margin-bottom: 15px;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
     }
 
     /* Controles da Apresentação */
@@ -279,18 +290,18 @@
       align-items: center;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: 15px;
-      margin-top: 10px;
+      height: 50px;
     }
 
     .nav-btn {
       background: rgba(0, 242, 254, 0.05);
       color: var(--border-cyan);
       border: 1px solid var(--border-cyan);
-      padding: 8px 20px;
-      border-radius: 6px;
+      padding: 10px 28px;
+      border-radius: 8px;
       cursor: pointer;
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.85rem;
+      font-size: 1rem;
       font-weight: 600;
       letter-spacing: 1px;
       transition: all 0.3s ease;
@@ -314,7 +325,7 @@
 
     .slide-counter {
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.85rem;
+      font-size: 1rem;
       color: var(--text-secondary);
       letter-spacing: 2px;
     }
@@ -369,7 +380,7 @@
           <p class="team-names">LEONARDO • TIAGO • MIRELLA</p>
         </div>
 
-        <p style="margin-top: 15px; color: var(--text-secondary); font-size: 1rem;">
+        <p style="margin-top: 20px; color: var(--text-secondary); font-size: 1.2rem;">
           TECNOLOGIAS: <span class="highlight">PYTHON</span> | <span class="highlight">JAVA</span> | <span class="highlight">C++</span>
         </p>
       </div>
