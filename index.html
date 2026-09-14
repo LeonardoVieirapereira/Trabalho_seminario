@@ -137,7 +137,9 @@
       justify-content: center;
       height: 100%;
       text-align: center;
-      gap: 20px;
+      gap: 15px;
+      width: 100%;
+      max-width: 100%;
     }
 
     .badge-tag {
@@ -145,39 +147,40 @@
       border: 1px solid var(--border-cyan);
       color: var(--border-cyan);
       font-family: 'Orbitron', sans-serif;
-      padding: 8px 24px;
+      padding: 6px 18px;
       border-radius: 20px;
-      font-size: 1.1rem;
-      letter-spacing: 2px;
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
       animation: pulseGlow 2s infinite alternate, animCascade 0.6s ease forwards;
     }
 
     .title-main {
       font-family: 'Orbitron', sans-serif;
-      font-size: 4rem;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
       font-weight: 900;
       background: linear-gradient(90deg, #00f2fe, #bd00ff, #00ff88, #ff007f, #00f2fe);
       background-size: 300% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-transform: uppercase;
-      letter-spacing: 4px;
+      letter-spacing: 2px;
       margin-bottom: 5px;
+      word-break: break-word;
       animation: flowColors 5s linear infinite, animCascade 0.8s ease forwards;
     }
 
     .subtitle-main {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 1.8rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
       color: var(--text-secondary);
       font-weight: 600;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       animation: animCascade 1s ease forwards;
     }
 
     .team-box {
-      margin-top: 30px;
-      padding: 20px 50px;
+      margin-top: 20px;
+      padding: 15px 35px;
       background: rgba(3, 7, 18, 0.8);
       border-radius: 12px;
       border: 1px solid rgba(189, 0, 255, 0.5);
@@ -187,17 +190,17 @@
 
     .team-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       color: var(--accent-purple);
       letter-spacing: 2px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .team-names {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
+      font-size: clamp(1.2rem, 2.8vw, 1.6rem);
       font-weight: 700;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       background: linear-gradient(90deg, #ffffff, #00f2fe, #ffffff, #bd00ff, #ffffff);
       background-size: 200% 100%;
       -webkit-background-clip: text;
@@ -388,7 +391,7 @@
           <p class="team-names">LEONARDO • TIAGO • MIRELLA</p>
         </div>
 
-        <p style="margin-top: 20px; color: var(--text-secondary); font-size: 1.2rem;">
+        <p style="margin-top: 15px; color: var(--text-secondary); font-size: 1.1rem;">
           TECNOLOGIAS: <span class="highlight">PYTHON</span> | <span class="highlight">JAVA</span> | <span class="highlight">C++</span>
         </p>
       </div>
