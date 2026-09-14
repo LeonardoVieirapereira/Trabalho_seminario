@@ -151,7 +151,7 @@
       animation: animCascade 1s ease forwards;
     }
 
-    /* CARD DE EQUIPE COM BORDA ILUMINADA SUAVE */
+    /* CARD DE EQUIPE */
     .team-box {
       margin-top: 25px;
       padding: 15px 30px;
@@ -207,23 +207,23 @@
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       line-height: 1.5;
       color: var(--text-primary);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-weight: 500;
     }
 
     ul {
       margin-left: 25px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     li {
       font-size: 1.1rem;
       line-height: 1.5;
       color: var(--text-primary);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     li::marker {
@@ -240,6 +240,22 @@
       font-weight: 600;
     }
 
+    .info-card {
+      background: rgba(3, 7, 18, 0.6);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      border-left: 4px solid var(--accent-purple);
+      padding: 12px 18px;
+      border-radius: 8px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      margin-bottom: 0;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+    }
+
     pre {
       background: var(--code-bg);
       border: 1px solid rgba(0, 242, 254, 0.25);
@@ -254,54 +270,6 @@
       margin-top: 8px;
       margin-bottom: 10px;
       box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
-    }
-
-    /* Estilo do Quiz / Botão de Resposta */
-    .quiz-box {
-      margin-top: auto;
-      padding: 12px;
-      background: rgba(3, 7, 18, 0.6);
-      border: 1px dashed rgba(0, 242, 254, 0.4);
-      border-radius: 8px;
-    }
-
-    .quiz-question {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.15rem;
-      color: #ffffff;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .btn-answer {
-      background: rgba(189, 0, 255, 0.15);
-      color: #e2a9ff;
-      border: 1px solid var(--accent-purple);
-      padding: 6px 14px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 1px;
-      transition: all 0.2s ease;
-    }
-
-    .btn-answer:hover {
-      background: var(--accent-purple);
-      color: #ffffff;
-      box-shadow: 0 0 12px rgba(189, 0, 255, 0.6);
-    }
-
-    .quiz-answer {
-      display: none;
-      margin-top: 8px;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.95rem;
-      color: var(--accent-green);
-      background: rgba(0, 255, 136, 0.08);
-      padding: 8px;
-      border-radius: 4px;
-      border-left: 3px solid var(--accent-green);
     }
 
     /* Controles da Apresentação */
@@ -410,223 +378,228 @@
     <!-- SLIDE 2 -->
     <div class="slide">
       <h2>Aula 32: Contexto e Problematização</h2>
-      <p><strong>O Desafio de Carlos:</strong> Como desenvolvedor iniciante, Carlos precisa processar textos para extrair informações e realizar análises estatísticas.</p>
+      <p><strong>O Desafio Prático de Carlos:</strong> Ao criar um analisador de logs de servidores, Carlos precisou processar grandes volumes de texto para identificar falhas e padrões numéricos.</p>
       <ul>
-        <li><strong>Busca de Padrões:</strong> Localizar a posição de caracteres e palavras.</li>
-        <li><strong>Contagem de Frequência:</strong> Contar quantas vezes um termo aparece.</li>
-        <li><strong>Normalização:</strong> Padronizar o texto (maiúsculas/minúsculas).</li>
+        <li><strong>Busca de Padrões:</strong> Localização precisa de palavras-chave como <code>"ERROR"</code> ou <code>"WARN"</code> usando índices numéricos.</li>
+        <li><strong>Contagem de Frequência:</strong> Monitoramento da quantidade exata de acessos e requisições repetidas por IP.</li>
+        <li><strong>Tratamento e Normalização:</strong> Remoção de espaços indesejados e padronização para caixa baixa, evitando divergências na busca de dados.</li>
       </ul>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Pergunta de Fixação:</p>
-        <p>Qual a principal vantagem de normalizar uma string para minúsculas antes de analisar?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ Evitar erros de comparação entre letras maiúsculas e minúsculas (ex: "Python" vs "python").</div>
+      <div class="info-card">
+        <p>💡 <strong>Aplicações Reais:</strong> Filtragem de e-mails de spam, mecanismos de busca, validação de formulários de cadastro e mineração de dados em redes sociais.</p>
       </div>
     </div>
 
     <!-- SLIDE 3 -->
     <div class="slide">
-      <h2>Aula 32: Principais Métodos de Strings</h2>
+      <h2>Aula 32: Métodos de Manipulação de Strings</h2>
+      <p>As cadeias de caracteres em Python fornecem métodos nativos otimizados para rápida busca e modificação de textos:</p>
       <ul>
-        <li><code>.find() / .indexOf()</code>: Retorna o índice numérico da primeira ocorrência.</li>
-        <li><code>.count()</code>: Calcula a frequência exata de um caractere ou palavra.</li>
-        <li><code>.upper() & .lower()</code>: Converte a string para maiúsculas ou minúsculas.</li>
-        <li><code>.replace(antigo, novo)</code>: Substitui sequências de texto por novos valores.</li>
+        <li><code>.find(subTexto)</code>: Localiza o índice inicial da subcadeia. Retorna <code>-1</code> caso o padrão não exista.</li>
+        <li><code>.count(padrão)</code>: Varre o texto e calcula a contagem total de ocorrências de determinado caractere ou palavra.</li>
+        <li><code>.upper() & .lower()</code>: Converte toda a string para maiúsculas ou minúsculas, fundamental para comparação insensível a maiúsculas/minúsculas.</li>
+        <li><code>.replace(antigo, novo)</code>: Garante a substituição de trechos de texto sem alterar a string original diretamente.</li>
       </ul>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Pergunta da Aula:</p>
-        <p>Qual função substitui todas as ocorrências de "Python" por "JavaScript"?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ O método .replace("Python", "JavaScript").</div>
+      <div class="info-card">
+        <p>🔒 <strong>Imutabilidade:</strong> Lembre-se de que Strings em Python, Java e C++ são imutáveis. Métodos como <code>.upper()</code> ou <code>.replace()</code> retornam uma nova cópia do texto sem alterar a variável original.</p>
       </div>
     </div>
 
     <!-- SLIDE 4 -->
     <div class="slide">
       <h2>Exemplo Prático em Python (Strings)</h2>
+      <p>Exemplo de extração e tratamento de dados de uma frase utilizando múltiplos métodos integrados:</p>
       <pre>
 texto = "Desenvolvimento de Sistemas"
 
-print(texto.find("Sistemas"))        # Saída: 19
-print(texto.count("e"))               # Saída: 5
-print(texto.upper())                 # Saída: DESENVOLVIMENTO DE SISTEMAS
-print(texto.replace("Sistemas", "Web")) # Saída: Desenvolvimento de Web
+# Busca de índice e contagem
+posicao = texto.find("Sistemas")     # Retorna: 19
+frequencia = texto.count("e")        # Retorna: 5
+
+# Normalização e Substituição
+texto_upper = texto.upper()          # "DESENVOLVIMENTO DE SISTEMAS"
+novo_texto = texto.replace("Sistemas", "Web") # "Desenvolvimento de Web"
+
+print(f"Posição: {posicao} | Ocorrências de 'e': {frequencia}")
+print(f"Texto Modificado: {novo_texto}")
       </pre>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Qual é a saída?</p>
-        <p>O que o código <code>print("aula".upper())</code> exibe no console?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ Exibe: AULA (em letras maiúsculas).</div>
+      <div class="info-card">
+        <p>📌 <strong>Detalhamento:</strong> A indexação em Python é baseada em zero (0). O caractere 'D' está no índice 0, enquanto a palavra "Sistemas" inicia exatamente no índice 19.</p>
       </div>
     </div>
 
     <!-- SLIDE 5 -->
     <div class="slide">
       <h2>Comparativo de Strings: Java & C++</h2>
+      <p>Entender a equivalência dos métodos de string em linguagens compiled melhora a portabilidade do código:</p>
       <pre>
 // --- JAVA ---
 String texto = "Desenvolvimento de Sistemas";
-int pos = texto.indexOf("Sistemas"); // 19
-String novo = texto.replace("Sistemas", "Web");
+int pos = texto.indexOf("Sistemas");                 // Retorna 19
+String novo = texto.replace("Sistemas", "Web");     // Substitui ocorrências
+boolean contém = texto.contains("Sistemas");         // Retorna true
 
 // --- C++ ---
+#include &lt;iostream&gt;
 #include &lt;string&gt;
+
 std::string texto = "Desenvolvimento de Sistemas";
-size_t pos = texto.find("Sistemas"); // 19
-texto.replace(pos, 8, "Web");
+size_t pos = texto.find("Sistemas");                 // Retorna 19
+texto.replace(pos, 8, "Web");                        // Substitui 8 caracteres
       </pre>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Comparativo:</p>
-        <p>Qual o equivalente do método <code>.find()</code> do Python na linguagem Java?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ O método .indexOf().</div>
+      <div class="info-card">
+        <p>⚡ <strong>Performance:</strong> Em C++, métodos como <code>replace</code> atuam diretamente na memória (mutável), enquanto Java e Python alocam novas instâncias na memória Heap.</p>
       </div>
     </div>
 
     <!-- SLIDE 6 -->
     <div class="slide">
       <h2>Aula 33: Estruturas de Dados (Listas)</h2>
-      <p><strong>O Desafio de Isabele (Jogo da Forca):</strong> Armazenar e atualizar o progresso de um jogo sem alterar a palavra secreta original.</p>
+      <p><strong>O Desafio de Isabele (Jogo da Forca):</strong> Isabele precisa gerenciar o estado da palavra secreta e exibir o progresso do jogador sem perder os dados originais.</p>
       <ul>
-        <li><strong>Listas em Python:</strong> Coleções <em>mutáveis</em> e <em>dinâmicas</em>.</li>
-        <li><strong>Índices:</strong> Cada elemento possui uma posição que começa em <code>0</code>.</li>
-        <li><strong>Progresso:</strong> Substituir underscores (<code>_</code>) pelas letras acertadas.</li>
+        <li><strong>Natureza Dinâmica:</strong> Diferente de arrays tradicionais com tamanho fixo, as listas em Python se expandem ou contraem conforme necessário.</li>
+        <li><strong>Indexação Direta:</strong> Cada posição armazena um caractere ou estado (ex: <code>'_'</code> para oculto e letras para palpites certos).</li>
+        <li><strong>Mutabilidade:</strong> Permite modificar o valor de posições específicas individualmente através dos seus índices.</li>
       </ul>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Pergunta sobre Listas:</p>
-        <p>O que significa dizer que uma lista em Python é "mutável"?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ Significa que seus elementos podem ser alterados, adicionados ou removidos após a criação.</div>
+      <div class="info-card">
+        <p>🧩 <strong>Aplicações de Listas:</strong> Gerenciamento de carrinhos de compras, filas de atendimento, dados de sensores e pontuações de jogos.</p>
       </div>
     </div>
 
     <!-- SLIDE 7 -->
     <div class="slide">
       <h2>Lógica do Jogo da Forca com Listas</h2>
+      <p>Análise do fluxo de dados para controle de estados do jogo através de listas contíguas:</p>
       <pre>
-1. Inicialização com Underscores:
+1. Inicialização de Estado:
    palavra_secreta = "python"
    progresso = ['_', '_', '_', '_', '_', '_']
 
-2. O jogador adivinha a letra 'p' (Índice 0):
-   progresso[0] = 'p' -> ['p', '_', '_', '_', '_', '_']
+2. Atualização por Posição (Acerto da letra 'p' no Índice 0):
+   progresso[0] = 'p' 
+   --> Estado Atual: ['p', '_', '_', '_', '_', '_']
 
-3. O jogador adivinha a letra 'o' (Índice 4):
-   progresso[4] = 'o' -> ['p', '_', '_', '_', 'o', '_']
+3. Atualização por Posição (Acerto da letra 'o' no Índice 4):
+   progresso[4] = 'o' 
+   --> Estado Atual: ['p', '_', '_', '_', 'o', '_']
+
+4. Verificação de Vitória:
+   if '_' not in progresso: print("Você Venceu!")
       </pre>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Teste de Lógica:</p>
-        <p>Se a palavra é "gato" e o jogador acertou a letra 't', qual o valor do índice 2?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ O valor é 't' (pois os índices são 0:'g', 1:'a', 2:'t', 3:'o').</div>
+      <div class="info-card">
+        <p>💡 <strong>Vantagem Operacional:</strong> A busca usando a palavra-chave <code>in</code> permite validar a presença do caractere de forma direta e concisa.</p>
       </div>
     </div>
 
     <!-- SLIDE 8 -->
     <div class="slide">
       <h2>Métodos Cruciais para Listas em Python</h2>
+      <p>Principais operações para inserção, remoção e ordenação de dados em listas dinâmicas:</p>
       <ul>
-        <li><code>.append(item)</code>: Adiciona um novo elemento ao final da lista.</li>
-        <li><code>.remove(item)</code>: Remove a primeira ocorrência do valor especificado.</li>
-        <li><code>.sort()</code>: Reorganiza os elementos em ordem crescente/alfabética.</li>
-        <li><code>len(lista)</code>: Retorna a quantidade total de elementos.</li>
+        <li><code>.append(item)</code>: Insere um novo elemento no final da lista com complexidade de tempo constante O(1).</li>
+        <li><code>.insert(índice, item)</code>: Adiciona um elemento em uma posição específica deslocando os subsequentes.</li>
+        <li><code>.remove(item)</code>: Localiza e apaga a primeira ocorrência do valor especificado.</li>
+        <li><code>.pop(índice)</code>: Remove e retorna o elemento armazenado no índice indicado.</li>
+        <li><code>.sort() / .reverse()</code>: Reorganiza os elementos em ordem alfabética/numérica ou inverte a lista.</li>
       </ul>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Pergunta da Aula 33:</p>
-        <p>Qual método usamos para adicionar uma nova letra acertada na lista?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ O método .append('letra').</div>
+      <div class="info-card">
+        <p>📏 <strong>Tamanho com len():</strong> A função nativa <code>len(lista)</code> informa instantaneamente a quantidade total de itens armazenados na estrutura.</p>
       </div>
     </div>
 
     <!-- SLIDE 9 -->
     <div class="slide">
       <h2>Exemplo Prático em Python (Listas)</h2>
+      <p>Implementação de lógica completa para armazenamento de palpites e controle de histórico de jogadas:</p>
       <pre>
-letras_acertadas = []
-
-letras_acertadas.append('p')
-letras_acertadas.append('y')
-print("Acertos:", letras_acertadas) # Saída: ['p', 'y']
-
+historico_tentativas = []
 palavra_secreta = "python"
+
+# Adicionando tentativas com verificação
 tentativa = input("Digite uma letra: ").lower()
 
-if tentativa in palavra_secreta:
-    letras_acertadas.append(tentativa)
+if tentativa not in historico_tentativas:
+    historico_tentativas.append(tentativa)
+    if tentativa in palavra_secreta:
+        print(f"A letra '{tentativa}' está na palavra!")
+    else:
+        print(f"A letra '{tentativa}' não existe na palavra.")
+else:
+    print("Você já tentou essa letra!")
+
+print("Histórico de Palpites:", historico_tentativas)
       </pre>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Pergunta de Código:</p>
-        <p>Como verificar em Python se uma letra tentada está dentro da palavra secreta?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ Usando o operador "in": if tentativa in palavra_secreta:</div>
+      <div class="info-card">
+        <p>⚙️ <strong>Controle de Fluxo:</strong> O método <code>.append()</code> assegura que cada palpite seja registrado no histórico sem duplicar entradas indesejadas.</p>
       </div>
     </div>
 
     <!-- SLIDE 10 -->
     <div class="slide">
       <h2>Listas Dinâmicas em Java (ArrayList)</h2>
+      <p>Em Java, coleções flexíveis utilizam a classe <code>ArrayList</code> do pacote <code>java.util</code>:</p>
       <pre>
 import java.util.ArrayList;
 
 public class JogoForca {
     public static void main(String[] args) {
-        ArrayList&lt;String&gt; letrasAcertadas = new ArrayList&lt;&gt;();
+        // Declaração de lista dinâmica de Strings
+        ArrayList&lt;String&gt; historico = new ArrayList&lt;&gt;();
 
-        letrasAcertadas.add("p");
-        letrasAcertadas.add("y");
+        // Adição e verificação de itens
+        historico.add("p");
+        historico.add("y");
+        
+        boolean contem = historico.contains("p"); // Retorna true
+        int tamanho = historico.size();           // Retorna 2
 
-        System.out.println("Progresso: " + letrasAcertadas);
+        System.out.println("Tamanho do Histórico: " + tamanho);
     }
 }
       </pre>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Pergunta de Java:</p>
-        <p>Qual classe é utilizada em Java para criar listas com tamanho dinâmico?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ A classe ArrayList.</div>
+      <div class="info-card">
+        <p>☕ <strong>Java Generics:</strong> O uso de <code>&lt;String&gt;</code> garante a segurança do tipo (Type Safety), prevenindo erros de compilação.</p>
       </div>
     </div>
 
     <!-- SLIDE 11 -->
     <div class="slide">
       <h2>Listas Dinâmicas em C++ (std::vector)</h2>
+      <p>Em C++, a estrutura equivalente para contêineres dinâmicos e contíguos de memória é o <code>std::vector</code>:</p>
       <pre>
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;string&gt;
 
 int main() {
-    std::vector&lt;std::string&gt; letrasAcertadas;
+    // Declaração do vector contíguo
+    std::vector&lt;std::string&gt; historico;
 
-    letrasAcertadas.push_back("p");
-    letrasAcertadas.push_back("y");
+    // Adição de itens no final do contêiner
+    historico.push_back("p");
+    historico.push_back("y");
 
-    std::cout &lt;&lt; "Tamanho: " &lt;&lt; letrasAcertadas.size();
+    std::cout &lt;&lt; "Itens armazenados: " &lt;&lt; historico.size() &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Primeiro item: " &lt;&lt; historico[0] &lt;&lt; std::endl;
+
     return 0;
 }
       </pre>
-      <div class="quiz-box">
-        <p class="quiz-question">❓ Pergunta de C++:</p>
-        <p>Qual o comando usado em C++ para adicionar um item no final de um vector?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ O comando push_back().</div>
+      <div class="info-card">
+        <p>🚀 <strong>Gestão de Memória:</strong> O <code>std::vector</code> gerencia o redimensionamento do array na memória de forma automática durante a execução.</p>
       </div>
     </div>
 
     <!-- SLIDE 12 -->
     <div class="slide">
       <h2>Conclusão e Síntese Geral</h2>
+      <p>Resumo técnico dos conceitos abordados nas aulas e introdução aos próximos tópicos:</p>
       <ul>
-        <li><strong>Strings:</strong> Essenciais para buscas, substituições e análise textual.</li>
-        <li><strong>Listas:</strong> Permitem criar aplicações dinâmicas mantendo históricos e estados de progresso.</li>
-        <li><strong>Próximo Passo (Aula 34):</strong> Estudo de <strong>Tuplas</strong> (coleções imutáveis) para proteção de dados.</li>
+        <li><strong>Manipulação de Strings:</strong> Permite a higienização de dados, análise de padrões e preparação de textos em múltiplos contextos.</li>
+        <li><strong>Listas Dinâmicas:</strong> Fornecem flexibilidade para armazenar coleções de dados modificáveis de forma indexada e eficiente.</li>
+        <li><strong>Próximo Passo (Aula 34):</strong> Estudo de <strong>Tuplas</strong> (coleções imutáveis) para proteção de dados contra alterações acidentais.</li>
       </ul>
-      <div class="quiz-box">
-        <p class="quiz-question">🏆 Desafio Final:</p>
-        <p>Qual a principal diferença entre uma Lista e uma Tupla em Python?</p>
-        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
-        <div class="quiz-answer">✔ A Lista é mutável (pode ser alterada) e a Tupla é imutável (não pode ser alterada).</div>
+      <div class="info-card">
+        <p>🎯 <strong>Diretriz do Desenvolvedor:</strong> Escolha <em>Strings</em> para texto puro, <em>Listas/Vectors/ArrayLists</em> quando os dados forem dinâmicos, e <em>Tuplas</em> quando a segurança da informação exigir imutabilidade.</p>
       </div>
     </div>
 
@@ -656,17 +629,6 @@ int main() {
     function changeSlide(dir) {
       current += dir;
       update();
-    }
-
-    function toggleAnswer(btn) {
-      const answerDiv = btn.nextElementSibling;
-      if (answerDiv.style.display === "block") {
-        answerDiv.style.display = "none";
-        btn.textContent = "REVELAR RESPOSTA";
-      } else {
-        answerDiv.style.display = "block";
-        btn.textContent = "OCULTAR RESPOSTA";
-      }
     }
 
     document.addEventListener('keydown', (e) => {
