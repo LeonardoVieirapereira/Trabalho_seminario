@@ -41,12 +41,12 @@
       position: relative;
     }
 
-    /* Efeito de Fundo Tecnológico e Partículas Glow */
+    /* Efeito de Luzes Neon Fluindo no Fundo */
     body::before {
       content: '';
       position: absolute;
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 350px;
       background: radial-gradient(circle, rgba(189, 0, 255, 0.25) 0%, transparent 70%);
       top: -50px;
       left: -50px;
@@ -57,8 +57,8 @@
     body::after {
       content: '';
       position: absolute;
-      width: 400px;
-      height: 400px;
+      width: 450px;
+      height: 450px;
       background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, transparent 70%);
       bottom: -100px;
       right: -100px;
@@ -66,7 +66,7 @@
       pointer-events: none;
     }
 
-    /* Container Principal com Efeito Neon */
+    /* Container Principal */
     .slide-box {
       width: 100%;
       max-width: 950px;
@@ -84,15 +84,19 @@
       z-index: 10;
     }
 
+    /* BORDA COM EFEITO DE CORES CORRENDO NO TOPO */
     .slide-box::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 10%;
-      right: 10%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--border-cyan), var(--accent-purple), transparent);
-      box-shadow: 0 0 12px var(--border-cyan);
+      left: 0;
+      right: 0;
+      height: 4px;
+      border-radius: 16px 16px 0 0;
+      background: linear-gradient(90deg, #00f2fe, #bd00ff, #00ff88, #4facfe, #00f2fe);
+      background-size: 300% 100%;
+      animation: flowBorder 4s linear infinite;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.8);
     }
 
     .slide {
@@ -109,7 +113,7 @@
       display: flex;
     }
 
-    /* ESTILOS EXCLUSIVOS DA ABERTURA */
+    /* ESTILOS DA ABERTURA */
     .intro-container {
       display: flex;
       flex-direction: column;
@@ -132,18 +136,19 @@
       animation: pulseGlow 2s infinite alternate, animCascade 0.6s ease forwards;
     }
 
+    /* TÍTULO COM EFEITO DE CORES "CORRENDO" (GRADIENT FLOW) */
     .title-main {
       font-family: 'Orbitron', sans-serif;
       font-size: 2.8rem;
       font-weight: 900;
-      background: linear-gradient(135deg, #ffffff 0%, var(--border-cyan) 50%, var(--accent-purple) 100%);
+      background: linear-gradient(90deg, #00f2fe, #bd00ff, #00ff88, #ff007f, #00f2fe);
+      background-size: 300% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-transform: uppercase;
       letter-spacing: 3px;
       margin-bottom: 5px;
-      text-shadow: 0 0 20px var(--neon-glow);
-      animation: animCascade 0.8s ease forwards;
+      animation: flowColors 5s linear infinite, animCascade 0.8s ease forwards;
     }
 
     .subtitle-main {
@@ -155,14 +160,29 @@
       animation: animCascade 1s ease forwards;
     }
 
+    /* CARD DE EQUIPE COM BORDA ILUMINADA QUE CORRE */
     .team-box {
       margin-top: 25px;
       padding: 15px 30px;
-      background: rgba(3, 7, 18, 0.7);
-      border: 1px solid rgba(189, 0, 255, 0.4);
+      background: rgba(3, 7, 18, 0.8);
+      position: relative;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(189, 0, 255, 0.2);
       animation: animCascade 1.2s ease forwards;
+    }
+
+    .team-box::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 12px;
+      padding: 1px;
+      background: linear-gradient(90deg, #bd00ff, #00f2fe, #00ff88, #bd00ff);
+      background-size: 200% 100%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: flowColors 3s linear infinite;
+      pointer-events: none;
     }
 
     .team-title {
@@ -173,13 +193,17 @@
       margin-bottom: 8px;
     }
 
+    /* NOMES DOS ALUNOS COM EFEITO DE TEXTO BRILHANTE DINÂMICO */
     .team-names {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.25rem;
-      color: #ffffff;
       font-weight: 700;
       letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      background: linear-gradient(90deg, #ffffff, #00f2fe, #ffffff, #bd00ff, #ffffff);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flowColors 4s linear infinite;
     }
 
     /* Tipografia Geral dos Slides */
@@ -350,7 +374,18 @@
       letter-spacing: 2px;
     }
 
-    /* ANIMAÇÕES NATIVAS CSS */
+    /* ANIMAÇÃO DE CORES "CORRENDO" */
+    @keyframes flowColors {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes flowBorder {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 300% 0%; }
+    }
+
     @keyframes slideFade {
       from { opacity: 0; transform: scale(0.98) translateY(10px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
@@ -376,7 +411,7 @@
 
   <div class="slide-box">
     
-    <!-- SLIDE 1 (ABERTURA COM ANIMAÇÃO ESPECIAL) -->
+    <!-- SLIDE 1 (ABERTURA COM CORES CORRENDO) -->
     <div class="slide active">
       <div class="intro-container">
         <span class="badge-tag">CURSO TÉCNICO • DESENVOLVIMENTO DE SISTEMAS</span>
