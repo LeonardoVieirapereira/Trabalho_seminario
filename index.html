@@ -40,24 +40,22 @@
       overflow: hidden;
     }
 
-    /* Container Principal com Efeito Glassmorphism & Neon */
     .slide-box {
       width: 100%;
       max-width: 950px;
-      height: 620px;
+      height: 640px;
       background: var(--card-bg);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(0, 242, 254, 0.3);
       border-radius: 16px;
       box-shadow: 0 0 35px var(--neon-glow), inset 0 0 15px rgba(0, 242, 254, 0.1);
-      padding: 40px;
+      padding: 35px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
     }
 
-    /* Linha decorativa no topo */
     .slide-box::before {
       content: '';
       position: absolute;
@@ -75,13 +73,14 @@
       flex-direction: column;
       justify-content: flex-start;
       animation: slideFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto;
+      padding-right: 5px;
     }
 
     .slide.active {
       display: flex;
     }
 
-    /* Tipografia Tecnológica */
     h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 2.2rem;
@@ -94,34 +93,34 @@
 
     h2 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: var(--border-cyan);
       letter-spacing: 1.5px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border-bottom: 2px solid var(--border-cyan);
-      padding-bottom: 8px;
+      padding-bottom: 6px;
       display: inline-block;
       text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
     }
 
     p {
-      font-size: 1.25rem;
-      line-height: 1.6;
+      font-size: 1.2rem;
+      line-height: 1.5;
       color: var(--text-primary);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-weight: 500;
     }
 
     ul {
       margin-left: 25px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     li {
-      font-size: 1.15rem;
-      line-height: 1.6;
+      font-size: 1.1rem;
+      line-height: 1.5;
       color: var(--text-primary);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     li::marker {
@@ -138,55 +137,103 @@
       font-weight: 600;
     }
 
-    /* Bloco de Código Estilizado */
     pre {
       background: var(--code-bg);
       border: 1px solid rgba(0, 242, 254, 0.25);
       border-left: 4px solid var(--border-cyan);
       color: #38bdf8;
-      padding: 15px;
+      padding: 12px;
       border-radius: 8px;
       font-family: 'Fira Code', monospace;
-      font-size: 0.95rem;
-      line-height: 1.5;
+      font-size: 0.9rem;
+      line-height: 1.4;
       overflow-x: auto;
-      margin-top: 10px;
+      margin-top: 8px;
+      margin-bottom: 10px;
       box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
     }
 
-    /* Rodapé e Botões */
+    /* Estilo do Quiz / Botão de Resposta */
+    .quiz-box {
+      margin-top: auto;
+      padding: 12px;
+      background: rgba(3, 7, 18, 0.6);
+      border: 1px dashed rgba(0, 242, 254, 0.4);
+      border-radius: 8px;
+    }
+
+    .quiz-question {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      color: #ffffff;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .btn-answer {
+      background: rgba(189, 0, 255, 0.15);
+      color: #e2a9ff;
+      border: 1px solid var(--accent-purple);
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-answer:hover {
+      background: var(--accent-purple);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(189, 0, 255, 0.6);
+    }
+
+    .quiz-answer {
+      display: none;
+      margin-top: 8px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      color: var(--accent-green);
+      background: rgba(0, 255, 136, 0.08);
+      padding: 8px;
+      border-radius: 4px;
+      border-left: 3px solid var(--accent-green);
+    }
+
+    /* Controles da Apresentação */
     .controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 18px;
+      padding-top: 15px;
       margin-top: 10px;
     }
 
-    button {
+    .nav-btn {
       background: rgba(0, 242, 254, 0.05);
       color: var(--border-cyan);
       border: 1px solid var(--border-cyan);
-      padding: 10px 24px;
+      padding: 8px 20px;
       border-radius: 6px;
       cursor: pointer;
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 1px;
       transition: all 0.3s ease;
       box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
     }
 
-    button:hover:not(:disabled) {
+    .nav-btn:hover:not(:disabled) {
       background: var(--border-cyan);
       color: #050811;
       box-shadow: 0 0 20px var(--border-cyan);
       transform: translateY(-2px);
     }
 
-    button:disabled {
+    .nav-btn:disabled {
       opacity: 0.25;
       cursor: not-allowed;
       border-color: var(--text-secondary);
@@ -196,7 +243,7 @@
 
     .slide-counter {
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-secondary);
       letter-spacing: 2px;
     }
@@ -211,87 +258,117 @@
 
   <div class="slide-box">
     
+    <!-- SLIDE 1 -->
     <div class="slide active">
       <h1>Desenvolvimento de Sistemas</h1>
       <p style="color: var(--accent-purple); font-weight: 700; letter-spacing: 1px;">CURSO TÉCNICO PROFISSIONALIZANTE • 1ª SÉRIE</p>
-      <div style="margin-top: 30px;">
+      <div style="margin-top: 20px;">
         <h2>Aulas 32 & 33: Processamento de Dados</h2>
+        <p>• <strong>Apresentadores:</strong> Leonardo, Tiago e Mirella</p>
         <p>• <strong>Aula 32:</strong> Técnicas Avançadas de Manipulação de Strings</p>
         <p>• <strong>Aula 33:</strong> Estruturas de Dados Dinâmicas com Listas</p>
-        <p style="margin-top: 25px; color: var(--text-secondary); font-size: 1rem;">
+        <p style="margin-top: 15px; color: var(--text-secondary); font-size: 1rem;">
           Linguagens Abordadas: <span class="highlight">Python</span>, <span class="highlight">Java</span> e <span class="highlight">C++</span>
         </p>
       </div>
     </div>
 
+    <!-- SLIDE 2 -->
     <div class="slide">
       <h2>Aula 32: Contexto e Problematização</h2>
-      <p><strong>O Desafio de Carlos:</strong> Como desenvolvedor iniciante, Carlos precisa processar grandes volumes de texto para extrair informações específicas e realizar análises estatísticas.</p>
+      <p><strong>O Desafio de Carlos:</strong> Como desenvolvedor iniciante, Carlos precisa processar textos para extrair informações e realizar análises estatísticas.</p>
       <ul>
-        <li><strong>Busca de Padrões:</strong> Localizar a posição exata de caracteres e palavras.</li>
-        <li><strong>Contagem de Frequência:</strong> Saber quantas vezes um termo aparece no texto.</li>
-        <li><strong>Normalização de Dados:</strong> Padronizar o texto (maiúsculas/minúsculas) para comparações sem erros de digitação.</li>
+        <li><strong>Busca de Padrões:</strong> Localizar a posição de caracteres e palavras.</li>
+        <li><strong>Contagem de Frequência:</strong> Contar quantas vezes um termo aparece.</li>
+        <li><strong>Normalização:</strong> Padronizar o texto (maiúsculas/minúsculas).</li>
       </ul>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Pergunta de Fixação:</p>
+        <p>Qual a principal vantagem de normalizar uma string para minúsculas antes de analisar?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ Evitar erros de comparação entre letras maiúsculas e minúsculas (ex: "Python" vs "python").</div>
+      </div>
     </div>
 
+    <!-- SLIDE 3 -->
     <div class="slide">
       <h2>Aula 32: Principais Métodos de Strings</h2>
-      <p>A manipulação de strings é indispensável para validações e análise de textos em sistemas corporativos:</p>
       <ul>
-        <li><code>.find() / .index()</code>: Retorna o índice numérico da primeira ocorrência de uma sub-string.</li>
+        <li><code>.find() / .indexOf()</code>: Retorna o índice numérico da primeira ocorrência.</li>
         <li><code>.count()</code>: Calcula a frequência exata de um caractere ou palavra.</li>
-        <li><code>.upper() & .lower()</code>: Converte a string para maiúsculas ou minúsculas (essencial para comparação de dados).</li>
+        <li><code>.upper() & .lower()</code>: Converte a string para maiúsculas ou minúsculas.</li>
         <li><code>.replace(antigo, novo)</code>: Substitui sequências de texto por novos valores.</li>
       </ul>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Pergunta da Aula:</p>
+        <p>Qual função substitui todas as ocorrências de "Python" por "JavaScript"?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ O método .replace("Python", "JavaScript").</div>
+      </div>
     </div>
 
+    <!-- SLIDE 4 -->
     <div class="slide">
       <h2>Exemplo Prático em Python (Strings)</h2>
-      <p>Veja como executar operações essenciais em Python com poucas linhas de código:</p>
       <pre>
-# Declaração da String
 texto = "Desenvolvimento de Sistemas"
 
-# Executando os métodos da Aula 32
-print(texto.find("Sistemas"))        # Saída: 19 (posição inicial)
-print(texto.count("e"))               # Saída: 5 (frequência da letra 'e')
+print(texto.find("Sistemas"))        # Saída: 19
+print(texto.count("e"))               # Saída: 5
 print(texto.upper())                 # Saída: DESENVOLVIMENTO DE SISTEMAS
 print(texto.replace("Sistemas", "Web")) # Saída: Desenvolvimento de Web
       </pre>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Qual é a saída?</p>
+        <p>O que o código <code>print("aula".upper())</code> exibe no console?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ Exibe: AULA (em letras maiúsculas).</div>
+      </div>
     </div>
 
+    <!-- SLIDE 5 -->
     <div class="slide">
       <h2>Comparativo de Strings: Java & C++</h2>
-      <p>A mesma lógica aplicada em outras linguagens orientadas a objetos e compiladas:</p>
       <pre>
 // --- JAVA ---
 String texto = "Desenvolvimento de Sistemas";
 int pos = texto.indexOf("Sistemas"); // 19
 String novo = texto.replace("Sistemas", "Web");
-System.out.println(texto.toUpperCase());
 
 // --- C++ ---
-#include &lt;iostream&gt;
 #include &lt;string&gt;
 std::string texto = "Desenvolvimento de Sistemas";
 size_t pos = texto.find("Sistemas"); // 19
 texto.replace(pos, 8, "Web");
       </pre>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Comparativo:</p>
+        <p>Qual o equivalente do método <code>.find()</code> do Python na linguagem Java?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ O método .indexOf().</div>
+      </div>
     </div>
 
+    <!-- SLIDE 6 -->
     <div class="slide">
       <h2>Aula 33: Estruturas de Dados (Listas)</h2>
-      <p><strong>O Desafio de Isabele (Jogo da Forca):</strong> Como armazenar e atualizar o progresso de um jogo mantendo a estrutura da palavra secreta?</p>
+      <p><strong>O Desafio de Isabele (Jogo da Forca):</strong> Armazenar e atualizar o progresso de um jogo sem alterar a palavra secreta original.</p>
       <ul>
-        <li><strong>Listas em Python:</strong> São coleções <em>mutáveis</em> e <em>dinâmicas</em> que armazenam múltiplos itens em uma só variável.</li>
-        <li><strong>Conceito de Índices:</strong> Cada elemento possui uma posição que começa em <code>0</code>.</li>
-        <li><strong>Evolução do Estado:</strong> Substiuição de underscores (<code>_</code>) pelas letras acertadas pelo jogador.</li>
+        <li><strong>Listas em Python:</strong> Coleções <em>mutáveis</em> e <em>dinâmicas</em>.</li>
+        <li><strong>Índices:</strong> Cada elemento possui uma posição que começa em <code>0</code>.</li>
+        <li><strong>Progresso:</strong> Substituir underscores (<code>_</code>) pelas letras acertadas.</li>
       </ul>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Pergunta sobre Listas:</p>
+        <p>O que significa dizer que uma lista em Python é "mutável"?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ Significa que seus elementos podem ser alterados, adicionados ou removidos após a criação.</div>
+      </div>
     </div>
 
+    <!-- SLIDE 7 -->
     <div class="slide">
       <h2>Lógica do Jogo da Forca com Listas</h2>
-      <p>Representação prática do acompanhamento de progresso com a palavra <span class="highlight">"python"</span>:</p>
       <pre>
 1. Inicialização com Underscores:
    palavra_secreta = "python"
@@ -303,52 +380,65 @@ texto.replace(pos, 8, "Web");
 3. O jogador adivinha a letra 'o' (Índice 4):
    progresso[4] = 'o' -> ['p', '_', '_', '_', 'o', '_']
       </pre>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Teste de Lógica:</p>
+        <p>Se a palavra é "gato" e o jogador acertou a letra 't', qual o valor do índice 2?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ O valor é 't' (pois os índices são 0:'g', 1:'a', 2:'t', 3:'o').</div>
+      </div>
     </div>
 
+    <!-- SLIDE 8 -->
     <div class="slide">
       <h2>Métodos Cruciais para Listas em Python</h2>
-      <p>Operações de manipulação dinâmica de coleções:</p>
       <ul>
         <li><code>.append(item)</code>: Adiciona um novo elemento ao final da lista.</li>
         <li><code>.remove(item)</code>: Remove a primeira ocorrência do valor especificado.</li>
-        <li><code>.sort()</code>: Reorganiza os elementos em ordem alfabética ou numérica.</li>
-        <li><code>len(lista)</code>: Retorna a quantidade total de elementos dentro da lista.</li>
+        <li><code>.sort()</code>: Reorganiza os elementos em ordem crescente/alfabética.</li>
+        <li><code>len(lista)</code>: Retorna a quantidade total de elementos.</li>
       </ul>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Pergunta da Aula 33:</p>
+        <p>Qual método usamos para adicionar uma nova letra acertada na lista?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ O método .append('letra').</div>
+      </div>
     </div>
 
+    <!-- SLIDE 9 -->
     <div class="slide">
       <h2>Exemplo Prático em Python (Listas)</h2>
-      <p>Código para armazenar palpites e gerenciar os acertos do jogador:</p>
       <pre>
-# Criando uma lista vazia de letras acertadas
 letras_acertadas = []
 
-# Adicionando elementos dinamicamente
 letras_acertadas.append('p')
 letras_acertadas.append('y')
 print("Acertos:", letras_acertadas) # Saída: ['p', 'y']
 
-# Verificando existência com o operador 'in'
 palavra_secreta = "python"
 tentativa = input("Digite uma letra: ").lower()
 
 if tentativa in palavra_secreta:
     letras_acertadas.append(tentativa)
       </pre>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Pergunta de Código:</p>
+        <p>Como verificar em Python se uma letra tentada está dentro da palavra secreta?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ Usando o operador "in": if tentativa in palavra_secreta:</div>
+      </div>
     </div>
 
+    <!-- SLIDE 10 -->
     <div class="slide">
       <h2>Listas Dinâmicas em Java (ArrayList)</h2>
-      <p>Em Java, utilizamos a classe <code>ArrayList</code> para criar listas com tamanho dinâmico:</p>
       <pre>
 import java.util.ArrayList;
 
 public class JogoForca {
     public static void main(String[] args) {
-        // Criando uma lista de Strings
         ArrayList&lt;String&gt; letrasAcertadas = new ArrayList&lt;&gt;();
 
-        // Adicionando elementos
         letrasAcertadas.add("p");
         letrasAcertadas.add("y");
 
@@ -356,44 +446,61 @@ public class JogoForca {
     }
 }
       </pre>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Pergunta de Java:</p>
+        <p>Qual classe é utilizada em Java para criar listas com tamanho dinâmico?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ A classe ArrayList.</div>
+      </div>
     </div>
 
+    <!-- SLIDE 11 -->
     <div class="slide">
       <h2>Listas Dinâmicas em C++ (std::vector)</h2>
-      <p>Em C++, a estrutura equivalente para listas redimensionáveis é o <code>std::vector</code>:</p>
       <pre>
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;string&gt;
 
 int main() {
-    // Criando um vector dinâmico
     std::vector&lt;std::string&gt; letrasAcertadas;
 
-    // Adicionando elementos com push_back
     letrasAcertadas.push_back("p");
     letrasAcertadas.push_back("y");
 
-    std::cout &lt;&lt; "Tamanho da lista: " &lt;&lt; letrasAcertadas.size();
+    std::cout &lt;&lt; "Tamanho: " &lt;&lt; letrasAcertadas.size();
     return 0;
 }
       </pre>
+      <div class="quiz-box">
+        <p class="quiz-question">❓ Pergunta de C++:</p>
+        <p>Qual o comando usado em C++ para adicionar um item no final de um vector?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ O comando push_back().</div>
+      </div>
     </div>
 
+    <!-- SLIDE 12 -->
     <div class="slide">
       <h2>Conclusão e Síntese Geral</h2>
-      <p>Domínio das estruturas fundamentais das Aulas 32 e 33:</p>
       <ul>
-        <li><strong>Strings:</strong> Indispensáveis para tratamento de entradas, buscas, substituições e análise de texto em qualquer software.</li>
-        <li><strong>Listas:</strong> Permitem criar aplicações dinâmicas e interativas (como o Jogo da Forca), armazenando dados que variam durante a execução.</li>
-        <li><strong>Próximo Passo (Aula 34):</strong> Compreender o conceito de <strong>Tuplas</strong> (coleções imutáveis) para proteção de dados sensíveis no sistema.</li>
+        <li><strong>Strings:</strong> Essenciais para buscas, substituições e análise textual.</li>
+        <li><strong>Listas:</strong> Permitem criar aplicações dinâmicas mantendo históricos e estados de progresso.</li>
+        <li><strong>Próximo Passo (Aula 34):</strong> Estudo de <strong>Tuplas</strong> (coleções imutáveis) para proteção de dados.</li>
       </ul>
+      <div class="quiz-box">
+        <p class="quiz-question">🏆 Desafio Final:</p>
+        <p>Qual a principal diferença entre uma Lista e uma Tupla em Python?</p>
+        <button class="btn-answer" onclick="toggleAnswer(this)">REVELAR RESPOSTA</button>
+        <div class="quiz-answer">✔ A Lista é mutável (pode ser alterada) e a Tupla é imutável (não pode ser alterada).</div>
+      </div>
     </div>
 
+    <!-- NAVEGAÇÃO -->
     <div class="controls">
-      <button id="prevBtn" onclick="changeSlide(-1)">❮ ANTERIOR</button>
+      <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">❮ ANTERIOR</button>
       <span class="slide-counter" id="counter">SLIDE 1 DE 12</span>
-      <button id="nextBtn" onclick="changeSlide(1)">PRÓXIMO ❯</button>
+      <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">PRÓXIMO ❯</button>
     </div>
 
   </div>
@@ -417,7 +524,18 @@ int main() {
       update();
     }
 
-    // Suporte para navegação pelas setas do teclado
+    // Função para Mostrar/Esconder as Respostas dos Quizzes
+    function toggleAnswer(btn) {
+      const answerDiv = btn.nextElementSibling;
+      if (answerDiv.style.display === "block") {
+        answerDiv.style.display = "none";
+        btn.textContent = "REVELAR RESPOSTA";
+      } else {
+        answerDiv.style.display = "block";
+        btn.textContent = "OCULTAR RESPOSTA";
+      }
+    }
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' && current < slides.length - 1) changeSlide(1);
       if (e.key === 'ArrowLeft' && current > 0) changeSlide(-1);
@@ -426,5 +544,4 @@ int main() {
     update();
   </script>
 </body>
-        </html>
-        
+</html>
